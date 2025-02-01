@@ -1,6 +1,6 @@
 # JokerHub
  A vanilla-balanced content pack for Balatro
- 
+
  Requires [Steamodded](https://github.com/Steamodded/smods) and [Lovely](https://github.com/ethangreen-dev/lovely-injector)
 
 ## Current Additions
@@ -14,3 +14,9 @@
     - **Silver Stake:** All changes from Pink Stake, but blinds scale even faster now!
 - 1 new Deck
     - **Filmmaker's Deck:** Starting you off with Director's Cut and halved boss reroll cost, this deck allows *any* boss blind to show up on *any* Ante, including showdown bosses!
+
+
+### Credits
+- ScrimGrim: concept and art for Orb of Confusion
+- Doodlesack12: concept and art for Going Viral, Snowball Effect, and Demon Core
+- Quackers T. Encheese: concept and art for Da Joki
