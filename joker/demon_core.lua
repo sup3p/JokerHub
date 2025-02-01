@@ -71,6 +71,7 @@ SMODS.Joker {
 					return {
 					  message = "Irradiated!",--localize { type = 'variable', key = 'a_xmult', vars = { card.ability.extra.x_mult } },
 					  card = card,
+					  colour = G.C.GREEN,
 					}
 				end
 			end
