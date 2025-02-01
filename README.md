@@ -1,5 +1,6 @@
 # JokerHub
  A vanilla-balanced content pack for Balatro
+ 
  Requires [Steamodded](https://github.com/Steamodded/smods) and [Lovely](https://github.com/ethangreen-dev/lovely-injector)
 
 ## Current Additions
