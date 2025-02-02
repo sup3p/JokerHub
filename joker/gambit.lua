@@ -1,11 +1,3 @@
-LOVELY_INTEGRITY = 'c77e5688b0a53deaa69dd9249830a8eeb6ccdc4e5441569e9624d900465e6d24'
-
-LOVELY_INTEGRITY = '5ba9899346053e7618f1c30acbb32253ad4b58ca3cc8936a228924c363aa04fb'
-
-LOVELY_INTEGRITY = '27676975e1c4dd53925e338f9164ec8d936db2163dafa28e7b05fd94a5695710'
-
-LOVELY_INTEGRITY = '92de68be4139b11ca8b7d1c81220e074e8b43304cbcb4f80cb81feaf746baa42'
-
 jh_get_food_jokers = function()
 	return {
 		--Base game
@@ -131,7 +123,7 @@ SMODS.Joker {
 			end]]
 			
 			--Scoring
-			if context.joker_main and not card.debuff then
+			if context.joker_main and not card.debuff and card.ability.extra.x_mult ~= 1 then
 				return {
 				  Xmult_mod = card.ability.extra.x_mult,
 				  message = localize { type = 'variable', key = 'a_xmult', vars = { card.ability.extra.x_mult } },
