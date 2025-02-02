@@ -44,7 +44,6 @@ function jh_find_ranks()
 	return found_ranks
 end
 
-
 function jh_pick_new_rank(exclude_rank) 
 	local ranks_in_deck = jh_find_ranks()
 	if #ranks_in_deck > 0 then
@@ -58,6 +57,17 @@ function jh_pick_new_rank(exclude_rank)
 		return ranks_in_deck[index]
 	else
 		return 14
+	end
+end
+
+--For cross-mod compatibility with Maximus
+function jh_scale_group_chat()
+	local groupchats = SMODS.find_card('j_mxms_group_chat')
+	if next(groupchats) then
+		for k, v in pairs(groupchats) do
+			v.ability.extra.chips = v.ability.extra.chips + 2 * G.GAME.soil_mod
+			v:juice_up(0.3, 0.4)
+		end
 	end
 end
 

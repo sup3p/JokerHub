@@ -82,6 +82,7 @@ SMODS.Joker {
 					}
 				else
 					card.ability.extra.x_mult = card.ability.extra.x_mult + card.ability.extra.scaling * (G.GAME.soil_mod or 1)
+					jh_scale_group_chat()
 					return {
 					  message = localize('k_upgrade_ex'),
 					  colour = G.C.MULT,

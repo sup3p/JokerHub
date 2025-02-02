@@ -64,6 +64,7 @@ function Card.remove(self)
 			if v.config.center_key == 'j_jokerhub_gambit' then
 				if jh_contains(jh_get_food_jokers(), self.config.center_key) then
 					v.ability.extra.x_mult = v.ability.extra.x_mult + v.ability.extra.scaling * (G.GAME.soil_mod or 1)
+					jh_scale_group_chat()
 					SMODS.calculate_effect({
 						message = localize('k_upgrade_ex'),
 						colour = G.C.MULT,
