@@ -22,7 +22,7 @@ jh_get_food_jokers = function()
 		"j_paperback_crispy_taco",
 		"j_paperback_soft_taco",
 		"j_paperback_dreamsicle",
-		"j_paperback_cake_pop",
+		"j_paperback_cakepop",
 		"j_paperback_caramel_apple",
 		"j_paperback_charred_marshmallow",
 		"j_paperback_joker_cookie",
