@@ -14,6 +14,8 @@ jh_get_food_jokers = function()
 		--Maximus
 		"j_mxms_fortune_cookie",
 		"j_mxms_leftovers",
+		"j_mxms_four_course_meal",
+		"j_mxms_endless_breadsticks",
 		--Paperback
 		"j_paperback_nachos",
 		"j_paperback_complete_breakfast",
