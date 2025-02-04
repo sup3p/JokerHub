@@ -38,8 +38,6 @@ assert(SMODS.load_file('decks.lua'))()
 
 assert(SMODS.load_file('stakes.lua'))()
 
-assert(SMODS.load_file('challenges.lua'))()
-
 if next(SMODS.find_mod("maximus")) then
 	table.insert(food_jokers, {
 		key = 'j_jokerhub_forbidden_fruit',
@@ -59,3 +57,5 @@ for i = 1, #ENABLED_JOKERS do
     error(ENABLED_JOKERS[i] .. ": " .. err)
   end
 end
+
+assert(SMODS.load_file('challenges.lua'))()

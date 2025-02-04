@@ -166,3 +166,20 @@ UIBox_button({label = {localize('b_reroll_boss'), localize('$')..(G.GAME.selecte
 '''
 match_indent = true
 times = 1
+
+# -----------------------------------
+# Challenge Modifiers
+# -----------------------------------
+
+[[patches]]
+[patches.pattern]
+target = "functions/common_events.lua"
+pattern = '''
+if forced_key and not G.GAME.banned_keys[forced_key] then
+'''
+position = "at"
+payload = '''
+if forced_key and (not G.GAME.banned_keys[forced_key] or (G.GAME.modifiers.jh_chef_ignores_bans and jh_contains(jh_get_food_jokers(), forced_key))) then 
+'''
+match_indent = true
+times = 1

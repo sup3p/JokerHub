@@ -191,7 +191,11 @@ return {
         achievement_descriptions={},
         achievement_names={},
         blind_states={},
-        challenge_names={},
+        challenge_names={
+            c_jokerhub_covid_19 = "COVID-19",
+            c_jokerhub_another_mans_treasure = "Another Man's Treasure",
+            c_jokerhub_dinner_time = "Dinner Time"
+        },
         collabs={},
         dictionary={},
         high_scores={},
