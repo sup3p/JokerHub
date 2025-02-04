@@ -1,15 +1,5 @@
 SMODS.Joker {
 	key = "broker",
-	loc_txt = {
-		name = 'Broker',
-		text = {
-			"Earn no {C:attention}Interest{}.",
-			"This Joker gains {C:chips}+#1#{} Chips for",
-			"every {C:money}$1{} of {C:attention}Interest{} that",
-			"would've been earned.",
-			"{C:inactive}(Currently {C:chips}+#2#{C:inactive} Chips)"
-		}
-	},
 	config = {
 		extra = {
 			chips = 0,

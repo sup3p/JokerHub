@@ -16,21 +16,6 @@ SMODS.Stake {
 	prefix_config = false,
 	key = "stake_jokerhub_pink",
 	applied_stakes = { "stake_purple" },
-	loc_txt = {
-		name = "Pink Stake",
-		text = {
-			"{C:attention}Showdown boss{} and end of game",
-			"is on {C:attention}Ante 9{}."
-		},
-		sticker = {
-			name = "Pink Sticker",
-			text = {
-				"Used this Joker",
-				"to win on {C:attention}Pink",
-				"{C:attention}Stake{} difficulty",
-			}
-		}
-	},
 	atlas = "jokerhub_atlas_stakes",
 	pos = { x = 0, y = 0 },
 	sticker_atlas = "jokerhub_atlas_stickers",
@@ -43,23 +28,9 @@ SMODS.Stake {
 }
 
 SMODS.Stake {
+	--yeah im aware the key should just be "silver" and not "stake_silver" but changing it now would fuck up saved stickers
 	key = "stake_silver",
 	applied_stakes = { "pink" },
-	loc_txt = {
-		name = "Silver Stake",
-		text = {
-			"Required score scales",
-            "faster for each {C:attention}Ante",
-		},
-		sticker = {
-			name = "Silver Sticker",
-			text = {
-				"Used this Joker",
-				"to win on {C:attention}Silver",
-				"{C:attention}Stake{} difficulty",
-			}
-		}
-	},
 	atlas = "atlas_stakes",
 	pos = { x = 1, y = 0 },
 	sticker_atlas = "atlas_stickers",

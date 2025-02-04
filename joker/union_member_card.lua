@@ -1,12 +1,5 @@
 SMODS.Joker {
 	key = "union_member_card",
-	loc_txt = {
-		name = 'Union Member Card',
-		text = {
-			"{X:mult,C:white}X#1#{} Mult if all other",
-			"owned {C:attention}Jokers{} are {C:blue}Common{}.",
-		}
-	},
 	config = {
 		extra = {
 			x_mult = 4

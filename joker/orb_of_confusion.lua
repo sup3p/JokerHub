@@ -1,13 +1,5 @@
 SMODS.Joker {
 	key = "orb_of_confusion",
-	loc_txt = {
-		name = 'Orb of Confusion',
-		text = {
-			"{X:mult,C:white}X#1#{} Mult",
-			"{C:attention}First hand{} of each round",
-			"is drawn face down."
-		}
-	},
 	config = {
 		extra = {
 			x_mult = 3

@@ -1,14 +1,5 @@
 SMODS.Joker {
 	key = "forbidden_fruit",
-	loc_txt = {
-		name = 'Forbidden Fruit',
-		text = {
-			"This Joker gains {X:mult,C:white}X#2#{} Mult per hand played.",
-			"{S:1.1,C:red,E:2}Self destructs{} if hand contains a",
-			"scoring {C:attention}#3#{}, rank changes every round.",
-			"{C:inactive}(Currently {X:mult,C:white} X#1# {C:inactive} Mult)"
-		}
-	},
 	config = {
 		extra = {
 			x_mult = 1,

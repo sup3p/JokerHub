@@ -1,15 +1,5 @@
 SMODS.Joker {
 	key = "going_viral",
-	loc_txt = {
-		name = 'Going Viral',
-		text = {
-			"This Joker gains {C:mult}+#2#{} Mult each played hand.",
-			"{C:attention}Joker{} and {C:attention}consumable{} cards in",
-			"packs or shop have a {C:green}#3# in #4#{} chance",
-			"to be replaced with {C:attention}Going Viral{}.",
-			"{C:inactive}(Currently {C:mult}+#1#{} {C:inactive}Mult)",
-		}
-	},
 	config = {
 		extra = {
 			mult = 0,

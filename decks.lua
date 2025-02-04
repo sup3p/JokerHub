@@ -13,16 +13,6 @@ SMODS.Back{
     config = {
 		voucher = "v_directors_cut"
 	},
-    loc_txt = {
-        name = "Filmmaker's Deck",
-        text ={
-            "Start with {C:red,T:v_directors_cut}Director's Cut{}.",
-			"{C:attention}Boss Blind{} reroll cost is",
-			"reduced to {C:money}$5{}.",
-			"Any {C:attention}Boss Blind{} can appear",
-			"on any {C:attention}Ante{}.",
-		},
-    },
     apply = function()
 		
         G.E_MANAGER:add_event(Event({

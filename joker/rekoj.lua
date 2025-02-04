@@ -1,13 +1,5 @@
 SMODS.Joker {
 	key = "rekoj",
-	loc_txt = {
-		name = 'rekoJ',
-		text = {
-			"{C:mult}+#1#{} Mult if poker hand contains at",
-			"least {C:attention}2{} scored {C:attention}ranks{} and scored {C:attention}ranks{}",
-			"are arranged from lowest to highest."
-		}
-	},
 	config = {
 		extra = {
 			mult = 15

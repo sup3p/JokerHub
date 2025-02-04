@@ -1,14 +1,5 @@
 SMODS.Joker {
 	key = "snowball_effect",
-	loc_txt = {
-		name = 'Snowball Effect',
-		text = {
-			"This Joker gains {X:mult,C:white} X#2# {} Mult",
-			"per {C:attention}consecutive Blind{}",
-			"beaten on the {C:attention}first hand{}.",
-			"{C:inactive}(Currently {X:mult,C:white} X#1# {C:inactive} Mult)"
-		}
-	},
 	config = {
 		extra = {
 			x_mult = 1,

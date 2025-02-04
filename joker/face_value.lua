@@ -1,13 +1,5 @@
 SMODS.Joker {
 	key = "face_value",
-	loc_txt = {
-		name = 'Face Value',
-		text = {
-			"Every played {C:attention}face card{}",
-			"permanently gains",
-			"{C:mult}+#1#{} Mult when scored."
-		}
-	},
 	config = {
 		extra = {
 			mult = 1

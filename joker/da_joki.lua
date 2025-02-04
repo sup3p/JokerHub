@@ -1,14 +1,5 @@
 SMODS.Joker {
 	key = "da_joki",
-	loc_txt = {
-		name = 'Da Joki',
-		text = {
-			"This Joker gains {C:mult}+#2#{} Mult per {C:attention}2{} played",
-			"hands if both hands are the same",
-			"{C:attention}hand type{}, otherwise {C:mult}-#3#{} Mult.",
-			"{C:inactive}(Currently {C:mult}+#1#{} {C:inactive}Mult, {C:attention}#4#{C:inactive})"
-		}
-	},
 	config = {
 		extra = {
 			mult = 0,

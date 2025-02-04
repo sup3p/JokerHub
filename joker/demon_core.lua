@@ -1,13 +1,5 @@
 SMODS.Joker {
 	key = "demon_core",
-	loc_txt = {
-		name = 'Demon Core',
-		text = {
-			"{X:mult,C:white}X#1#{} Mult",
-			"{C:green}#2# in #3#{} chance to destroy",
-			"all {C:attention}Jokers{} when hand is played."
-		}
-	},
 	config = {
 		extra = {
 			x_mult = 4,

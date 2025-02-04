@@ -82,15 +82,6 @@ end
 
 SMODS.Joker {
 	key = "gambit",
-	loc_txt = {
-		name = 'Gambit',
-		text = {
-			"This Joker gains {X:mult,C:white} X#2# {} Mult",
-			"for every {C:attention}food Joker{}",
-			"that is destroyed.",
-			"{C:inactive}(Currently {X:mult,C:white} X#1# {C:inactive} Mult)"
-		}
-	},
 	config = {
 		extra = {
 			x_mult = 1,
