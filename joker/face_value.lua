@@ -1,3 +1,14 @@
+local old_get_chip_mult = Card.get_chip_mult
+function Card.get_chip_mult(self)
+	local old_ret = old_get_chip_mult(self)
+	if not self.debuff and not (self.ability.set == "Joker") then
+		if self.ability.jh_mult_perma_bonus then
+			old_ret = old_ret + self.ability.jh_mult_perma_bonus
+		end
+	end
+	return old_ret
+end
+
 SMODS.Joker {
 	key = "face_value",
 	config = {
@@ -44,12 +55,12 @@ SMODS.Joker {
 		if not card.debuff then
 			if context.individual and context.cardarea == G.play then
 				if context.other_card:is_face() then
-					context.other_card.ability.mult_perma_bonus = context.other_card.ability.mult_perma_bonus or 0
-					context.other_card.ability.mult_perma_bonus = context.other_card.ability.mult_perma_bonus + card.ability.extra.mult
+					context.other_card.ability.jh_mult_perma_bonus = context.other_card.ability.jh_mult_perma_bonus or 0
+					context.other_card.ability.jh_mult_perma_bonus = context.other_card.ability.jh_mult_perma_bonus + card.ability.extra.mult
 					return {
 						message = localize('k_upgrade_ex'),
 						colour = G.C.MULT,
-						card = context.other_card
+						card = card
 					}
 				end
 			end

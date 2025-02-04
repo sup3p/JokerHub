@@ -163,6 +163,9 @@ return {
                     "to win on {C:attention}Silver",
                     "{C:attention}Stake{} difficulty",
                 }
+            },
+            jokerhub_card_extra_mult = {
+                text = { "{C:mult}+#1#{} extra mult" }
             }
         },
         Planet={},

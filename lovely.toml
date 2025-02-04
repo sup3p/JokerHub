@@ -183,3 +183,64 @@ if forced_key and (not G.GAME.banned_keys[forced_key] or (G.GAME.modifiers.jh_ch
 '''
 match_indent = true
 times = 1
+
+
+# -----------------------------------
+# Face Value
+# -----------------------------------
+
+[[patches]]
+[patches.pattern]
+target = "card.lua"
+pattern = '''
+perma_bonus = self.ability and self.ability.perma_bonus or 0,
+'''
+position = "after"
+payload = '''
+jh_mult_perma_bonus = self.ability and self.ability.perma_bonus or 0,
+'''
+match_indent = true
+times = 1
+
+[[patches]]
+[patches.pattern]
+target = "card.lua"
+pattern = '''
+bonus_chips = (self.ability.bonus + (self.ability.perma_bonus or 0)) > 0 and (self.ability.bonus + (self.ability.perma_bonus or 0)) or nil,
+'''
+position = "after"
+payload = '''
+jh_bonus_mult = (self.ability.jh_mult_perma_bonus or 0) > 0 and self.ability.jh_mult_perma_bonus or nil,
+'''
+match_indent = true
+times = 1
+
+[[patches]]
+[patches.pattern]
+target = "functions/common_events.lua"
+pattern = '''
+elseif _c.set == 'Enhanced' then 
+'''
+position = "before"
+payload = '''
+	if specific_vars.jh_bonus_mult then
+		localize{type = 'other', key = 'jokerhub_card_extra_mult', nodes = desc_nodes, vars = {specific_vars.jh_bonus_mult}}
+	end
+'''
+match_indent = true
+times = 1
+
+[[patches]]
+[patches.pattern]
+target = "functions/common_events.lua"
+pattern = '''
+elseif _c.set == 'Booster' then 
+'''
+position = "before"
+payload = '''
+	if specific_vars and specific_vars.jh_bonus_mult then
+		localize{type = 'other', key = 'jokerhub_card_extra_mult', nodes = desc_nodes, vars = {specific_vars.jh_bonus_mult}}
+	end
+'''
+match_indent = true
+times = 1
