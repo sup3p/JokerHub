@@ -175,14 +175,16 @@ return {
                 name = "Pink Stake",
                 text = {
                     "{C:attention}Showdown boss{} and end of game",
-                    "is on {C:attention}Ante 9{}."
+                    "is on {C:attention}Ante 9{}.",
+                    "{s:0.8}Applies Purple Stake and below"
                 },
             },
-            stake_jokerhub_silver = {
+            stake_jokerhub_stake_silver = {
                 name = "Silver Stake",
                 text = {
                     "Required score scales",
                     "faster for each {C:attention}Ante",
+                    "{s:0.8}Applies Pink Stake and below"
                 },
             },
         },

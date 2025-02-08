@@ -37,13 +37,13 @@ G.C.SILVER = HEX('9396c2')
 assert(SMODS.load_file('decks.lua'))()
 
 assert(SMODS.load_file('stakes.lua'))()
-
+--[[
 if next(SMODS.find_mod("maximus")) then
 	table.insert(food_jokers, {
 		key = 'j_jokerhub_forbidden_fruit',
 		name = 'Forbidden Fruit'
 	})
-end
+end]]
 
 -- Register the jokers in custom order
 for i = 1, #ENABLED_JOKERS do
