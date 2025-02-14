@@ -2,14 +2,6 @@ local old_generate_ui = SMODS.Joker.generate_ui
 
 SMODS.Joker {
 	key = "hudson",
-	loc_txt = {
-		name = 'Hudson',
-		text = {
-			"Copies ability of {C:attention}Joker{} to the left.",
-			"This Joker triggers once for",
-			"each {C:attention}7{} held in hand."
-		}
-	},
 	config = {
 		extra = {
 			incompatible_jokers = {

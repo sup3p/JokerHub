@@ -1,13 +1,5 @@
 SMODS.Joker {
 	key = "garbage_bag",
-	loc_txt = {
-		name = 'Garbage Bag',
-		text = {
-			"Unused {C:red}discards{} are carried",
-			"into the next round.",
-			"{C:inactive}(Max of {C:red}#1#{C:inactive} discards){}"
-		}
-	},
 	config = {
 		extra = {
 			carryover = 0,

@@ -1,15 +1,5 @@
 SMODS.Joker {
 	key = "going_viral",
-	loc_txt = {
-		name = 'Going Viral',
-		text = {
-			"This Joker gains {C:mult}+#2#{} Mult each played hand.",
-			"{C:attention}Joker{} and {C:attention}consumable{} cards in",
-			"packs or shop have a {C:green}#3# in #4#{} chance",
-			"to be replaced with {C:attention}Going Viral{}.",
-			"{C:inactive}(Currently {C:mult}+#1#{} {C:inactive}Mult)",
-		}
-	},
 	config = {
 		extra = {
 			mult = 0,
@@ -33,6 +23,7 @@ SMODS.Joker {
 		if not card.debuff then
 			if context.cardarea == G.jokers and context.before and not (context.individual or context.repetition) and not context.blueprint then
 				card.ability.extra.mult = card.ability.extra.mult + card.ability.extra.scaling * (G.GAME.soil_mod or 1)
+				jh_scale_group_chat()
 				return {
 				  message = localize('k_upgrade_ex'),
 				  colour = G.C.MULT,

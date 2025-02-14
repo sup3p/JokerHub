@@ -1,14 +1,5 @@
 SMODS.Joker {
 	key = "forbidden_fruit",
-	loc_txt = {
-		name = 'Forbidden Fruit',
-		text = {
-			"This Joker gains {X:mult,C:white}X#2#{} Mult per hand played.",
-			"{S:1.1,C:red,E:2}Self destructs{} if hand contains a",
-			"scoring {C:attention}#3#{}, rank changes every round.",
-			"{C:inactive}(Currently {X:mult,C:white} X#1# {C:inactive} Mult)"
-		}
-	},
 	config = {
 		extra = {
 			x_mult = 1,
@@ -38,7 +29,7 @@ SMODS.Joker {
 	unlocked = true,
 	discovered = false,
 	blueprint_compat = true,
-	eternal_compat = true,
+	eternal_compat = false,
 	perishable_compat = false,
 	calculate = function(self, card, context)
 		if not card.debuff then
@@ -82,6 +73,7 @@ SMODS.Joker {
 					}
 				else
 					card.ability.extra.x_mult = card.ability.extra.x_mult + card.ability.extra.scaling * (G.GAME.soil_mod or 1)
+					jh_scale_group_chat()
 					return {
 					  message = localize('k_upgrade_ex'),
 					  colour = G.C.MULT,

@@ -1,11 +1,3 @@
-LOVELY_INTEGRITY = 'c77e5688b0a53deaa69dd9249830a8eeb6ccdc4e5441569e9624d900465e6d24'
-
-LOVELY_INTEGRITY = '5ba9899346053e7618f1c30acbb32253ad4b58ca3cc8936a228924c363aa04fb'
-
-LOVELY_INTEGRITY = '27676975e1c4dd53925e338f9164ec8d936db2163dafa28e7b05fd94a5695710'
-
-LOVELY_INTEGRITY = '92de68be4139b11ca8b7d1c81220e074e8b43304cbcb4f80cb81feaf746baa42'
-
 jh_get_food_jokers = function()
 	return {
 		--Base game
@@ -22,13 +14,15 @@ jh_get_food_jokers = function()
 		--Maximus
 		"j_mxms_fortune_cookie",
 		"j_mxms_leftovers",
+		"j_mxms_four_course_meal",
+		"j_mxms_breadsticks",
 		--Paperback
 		"j_paperback_nachos",
 		"j_paperback_complete_breakfast",
 		"j_paperback_crispy_taco",
 		"j_paperback_soft_taco",
 		"j_paperback_dreamsicle",
-		"j_paperback_cake_pop",
+		"j_paperback_cakepop",
 		"j_paperback_caramel_apple",
 		"j_paperback_charred_marshmallow",
 		"j_paperback_joker_cookie",
@@ -59,7 +53,7 @@ jh_get_food_jokers = function()
 		"Frozen Yogurt",
 		"Churu Treat",]]
 		--Tesseract
-		"j_tes_apple_pie",
+		"j_tes_pie",
 		"j_tes_pineapple",
 		"j_tes_blue_java",
 	}
@@ -72,6 +66,7 @@ function Card.remove(self)
 			if v.config.center_key == 'j_jokerhub_gambit' then
 				if jh_contains(jh_get_food_jokers(), self.config.center_key) then
 					v.ability.extra.x_mult = v.ability.extra.x_mult + v.ability.extra.scaling * (G.GAME.soil_mod or 1)
+					jh_scale_group_chat()
 					SMODS.calculate_effect({
 						message = localize('k_upgrade_ex'),
 						colour = G.C.MULT,
@@ -87,15 +82,6 @@ end
 
 SMODS.Joker {
 	key = "gambit",
-	loc_txt = {
-		name = 'Gambit',
-		text = {
-			"This Joker gains {X:mult,C:white} X#2# {} Mult",
-			"for every {C:attention}food Joker{}",
-			"that is destroyed.",
-			"{C:inactive}(Currently {X:mult,C:white} X#1# {C:inactive} Mult)"
-		}
-	},
 	config = {
 		extra = {
 			x_mult = 1,
@@ -131,7 +117,7 @@ SMODS.Joker {
 			end]]
 			
 			--Scoring
-			if context.joker_main and not card.debuff then
+			if context.joker_main and not card.debuff and card.ability.extra.x_mult ~= 1 then
 				return {
 				  Xmult_mod = card.ability.extra.x_mult,
 				  message = localize { type = 'variable', key = 'a_xmult', vars = { card.ability.extra.x_mult } },

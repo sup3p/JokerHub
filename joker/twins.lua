@@ -1,14 +1,5 @@
 SMODS.Joker {
 	key = "twins",
-	loc_txt = {
-		name = 'Twins',
-		text = {
-			"Create {C:attention}2{} of a random {C:tarot}Tarot{}",
-			"card if poker hand contains",
-			"a {C:attention}Flush{} and a {C:attention}Pair{}.",
-			"{C:inactive}(Must have room)"
-		}
-	},
 	config = {
 		extra = {
 		}

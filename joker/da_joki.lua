@@ -1,14 +1,5 @@
 SMODS.Joker {
 	key = "da_joki",
-	loc_txt = {
-		name = 'Da Joki',
-		text = {
-			"This Joker gains {C:mult}+#2#{} Mult per {C:attention}2{} played",
-			"hands if both hands are the same",
-			"{C:attention}hand type{}, otherwise {C:mult}-#3#{} Mult.",
-			"{C:inactive}(Currently {C:mult}+#1#{} {C:inactive}Mult, {C:attention}#4#{C:inactive})"
-		}
-	},
 	config = {
 		extra = {
 			mult = 0,
@@ -36,6 +27,7 @@ SMODS.Joker {
 					if context.scoring_name == card.ability.extra.hand_type then
 						card.ability.extra.mult = card.ability.extra.mult + card.ability.extra.scaling * (G.GAME.soil_mod or 1)
 						card.ability.extra.hand_type = nil
+						jh_scale_group_chat()
 						return {
 						  message = localize('k_upgrade_ex'),
 						  colour = G.C.MULT,
@@ -58,7 +50,7 @@ SMODS.Joker {
 			end
 			
 			--Scoring
-			if context.joker_main and context.cardarea == G.jokers then
+			if context.joker_main and context.cardarea == G.jokers and card.ability.extra.mult > 0 then
 				return {
 				  mult_mod = card.ability.extra.mult,
 				  message = localize { type = 'variable', key = 'a_mult', vars = { card.ability.extra.mult } },

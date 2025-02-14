@@ -1,14 +1,5 @@
 SMODS.Joker {
 	key = "snowball_effect",
-	loc_txt = {
-		name = 'Snowball Effect',
-		text = {
-			"This Joker gains {X:mult,C:white} X#2# {} Mult",
-			"per {C:attention}consecutive Blind{}",
-			"beaten on the {C:attention}first hand{}.",
-			"{C:inactive}(Currently {X:mult,C:white} X#1# {C:inactive} Mult)"
-		}
-	},
 	config = {
 		extra = {
 			x_mult = 1,
@@ -33,6 +24,7 @@ SMODS.Joker {
 			if context.end_of_round and not context.repetition and not context.individual and not context.blueprint then
 				if G.GAME.current_round.hands_played <= 1 then
 					card.ability.extra.x_mult = card.ability.extra.x_mult + card.ability.extra.scaling * (G.GAME.soil_mod or 1)
+					jh_scale_group_chat()
 					return {
 					  message = localize('k_upgrade_ex'),
 					  colour = G.C.MULT,
