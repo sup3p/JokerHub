@@ -30,7 +30,7 @@ SMODS.Joker {
 			for i = 1, #G.jokers.cards do
 				if G.jokers.cards[i] == card then other_joker = G.jokers.cards[i-1] end
 			end
-			if other_joker and other_joker ~= card and not jh_contains(card.ability.extra.incompatible_jokers, other_joker.config.center.key) then
+			if other_joker and other_joker ~= card and not JHUB.contains(card.ability.extra.incompatible_jokers, other_joker.config.center.key) then
 				local returns = {}
 				local return_metadata = {}
 				local ret_repetitions = 0
@@ -116,7 +116,7 @@ SMODS.Joker {
 			for i = 1, #G.jokers.cards do
 				if G.jokers.cards[i] == card then other_joker = G.jokers.cards[i-1] end
 			end
-			if other_joker and other_joker ~= card and other_joker.config.center.blueprint_compat and not jh_contains(card.ability.extra.incompatible_jokers, other_joker.config.center.key) then
+			if other_joker and other_joker ~= card and other_joker.config.center.blueprint_compat and not JHUB.contains(card.ability.extra.incompatible_jokers, other_joker.config.center.key) then
 				card.ability.blueprint_compat = 'compatible'
 			else
 				card.ability.blueprint_compat = 'incompatible'
