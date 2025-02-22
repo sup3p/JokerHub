@@ -22,7 +22,10 @@ SMODS.Joker {
 	calculate = function(self, card, context)
 		if not card.debuff and not context.blueprint then
 			if context.setting_blind and card.ability.extra.carryover > 0 then
-				ease_discard(card.ability.extra.carryover)
+				G.E_MANAGER:add_event(Event({func = function()
+					ease_discard(card.ability.extra.carryover)
+					card_eval_status_text(context.blueprint_card or card, 'extra', nil, nil, nil, {message = localize{type = 'variable', key = 'a_discards', vars = {card.ability.extra.carryover}}})
+				return true end }))
 			end
 			
 			if context.end_of_round and not context.repetition and not context.individual then

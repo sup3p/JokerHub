@@ -221,7 +221,9 @@ return {
         suits_plural={},
         suits_singular={},
         tutorial={},
-        v_dictionary={},
+        v_dictionary={
+            a_discards="+#1# Discards",
+        },
         v_text={},
     },
 }
