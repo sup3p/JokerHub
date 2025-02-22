@@ -46,3 +46,43 @@ function JHUB.scale_group_chat()
 		end
 	end
 end
+
+-- Initialize Food pool if not existing, which may be created by other mods.
+-- Any joker can add itself to this pool by adding a pools table to its definition
+-- Credits to Cryptid for the idea
+if not SMODS.ObjectTypes.Food then
+	SMODS.ObjectType {
+	  key = 'Food',
+	  default = 'j_egg',
+	  cards = {
+		  ["j_gros_michel"] = true,
+		  ["j_egg"] = true,
+		  ["j_ice_cream"] = true,
+		  ["j_cavendish"] = true,
+		  ["j_turtle_bean"] = true,
+		  ["j_diet_cola"] = true,
+		  ["j_popcorn"] = true,
+		  ["j_ramen"] = true,
+		  ["j_selzer"] = true,
+	  },
+	}
+end
+
+---Checks if a provided card is classified as a "Food Joker"
+function JHUB.is_food(card)
+	local center = type(card) == "string"
+		and G.P_CENTERS[card]
+		or (card.config and card.config.center)
+  
+	if not center then
+	  return false
+	end
+  
+	-- If the center has the Food pool in its definition
+	if center.pools and center.pools.Food then
+	  return true
+	end
+  
+	-- If it doesn't, we check if this is a vanilla food joker
+	return JHUB.vanilla_food[center.key]
+  end

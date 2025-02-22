@@ -26,6 +26,9 @@ SMODS.Joker {
 	atlas = "atlas_jokers",
 	pos = { x = 0, y = 0 },
 	cost = 8,
+	pools = {
+		Food = true
+	},
 	unlocked = true,
 	discovered = false,
 	blueprint_compat = true,

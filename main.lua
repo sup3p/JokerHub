@@ -2,7 +2,7 @@ JHUB = {}
 
 -- Code below I took from Paperback
 -- Disable specific jokers by commenting them out
-local ENABLED_JOKERS = {
+JHUB.ENABLED_JOKERS = {
 	--Common
 	"broker",
 	"rekoj",
@@ -25,6 +25,18 @@ local ENABLED_JOKERS = {
 	"hudson",
 }
 
+JHUB.vanilla_food = {
+	j_gros_michel = true,
+	j_egg = true,
+	j_ice_cream = true,
+	j_cavendish = true,
+	j_turtle_bean = true,
+	j_diet_cola = true,
+	j_popcorn = true,
+	j_ramen = true,
+	j_selzer = true,
+}
+
 assert(SMODS.load_file('functions.lua'))()
 
 SMODS.Atlas {
@@ -40,24 +52,17 @@ G.C.SILVER = HEX('9396c2')
 assert(SMODS.load_file('decks.lua'))()
 
 assert(SMODS.load_file('stakes.lua'))()
---[[
-if next(SMODS.find_mod("maximus")) then
-	table.insert(food_jokers, {
-		key = 'j_jokerhub_forbidden_fruit',
-		name = 'Forbidden Fruit'
-	})
-end]]
 
 -- Register the jokers in custom order
-for i = 1, #ENABLED_JOKERS do
+for i = 1, #JHUB.ENABLED_JOKERS do
   local status, err = pcall(function()
-    return NFS.load(SMODS.current_mod.path .. "/joker/" .. ENABLED_JOKERS[i] .. ".lua")()
+    return NFS.load(SMODS.current_mod.path .. "/joker/" .. JHUB.ENABLED_JOKERS[i] .. ".lua")()
   end)
-  sendDebugMessage("Loaded joker: " .. ENABLED_JOKERS[i], "JokerHub")
+  sendDebugMessage("Loaded joker: " .. JHUB.ENABLED_JOKERS[i], "JokerHub")
 
   -- If a file didn't load correctly, display the file in question and return
   if not status then
-    error(ENABLED_JOKERS[i] .. ": " .. err)
+    error(JHUB.ENABLED_JOKERS[i] .. ": " .. err)
   end
 end
 
