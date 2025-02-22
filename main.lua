@@ -1,3 +1,5 @@
+JHUB = {}
+
 -- Code below I took from Paperback
 -- Disable specific jokers by commenting them out
 local ENABLED_JOKERS = {

@@ -4,7 +4,7 @@ SMODS.Joker {
 		extra = {
 			x_mult = 1,
 			scaling = 0.1,
-			rank = jh_pick_new_rank(0)
+			rank = JHUB.pick_new_rank(0)
 		}
 	},
 	rarity = 3,
@@ -73,7 +73,7 @@ SMODS.Joker {
 					}
 				else
 					card.ability.extra.x_mult = card.ability.extra.x_mult + card.ability.extra.scaling * (G.GAME.soil_mod or 1)
-					jh_scale_group_chat()
+					JHUB.scale_group_chat()
 					return {
 					  message = localize('k_upgrade_ex'),
 					  colour = G.C.MULT,
@@ -94,7 +94,7 @@ SMODS.Joker {
 			--Pick rank
 			if context.end_of_round and not context.repetition and not context.individual and not context.blueprint and not next(SMODS.find_card("j_mxms_stop_sign")) then
 				
-				card.ability.extra.rank = jh_pick_new_rank(card.ability.extra.rank)
+				card.ability.extra.rank = JHUB.pick_new_rank(card.ability.extra.rank)
 			end
 		end
 	end

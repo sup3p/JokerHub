@@ -22,7 +22,7 @@ SMODS.Joker {
 		if not card.debuff then
 			--Scoring
 			if context.joker_main and card.ability.extra.chips > 0 then
-				jh_scale_group_chat()
+				JHUB.scale_group_chat()
 				return {
 				  chip_mod = card.ability.extra.chips,
 				  message = localize { type = 'variable', key = 'a_chips', vars = { card.ability.extra.chips } },

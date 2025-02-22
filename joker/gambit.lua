@@ -64,9 +64,9 @@ function Card.remove(self)
 	if self.added_to_deck and self.ability.set == 'Joker' and not G.CONTROLLER.locks.selling_card then
 		for k, v in ipairs(G.jokers.cards) do
 			if v.config.center_key == 'j_jokerhub_gambit' then
-				if jh_contains(jh_get_food_jokers(), self.config.center_key) then
+				if JHUB.contains(jh_get_food_jokers(), self.config.center_key) then
 					v.ability.extra.x_mult = v.ability.extra.x_mult + v.ability.extra.scaling * (G.GAME.soil_mod or 1)
-					jh_scale_group_chat()
+					JHUB.scale_group_chat()
 					SMODS.calculate_effect({
 						message = localize('k_upgrade_ex'),
 						colour = G.C.MULT,
@@ -106,7 +106,7 @@ SMODS.Joker {
 			--[[
 			if context.destroying_cards then
 				print(context.destroyed_card.ability.name)
-				if jh_contains(jh_get_food_jokers(), context.destroyed_card.ability.name) then
+				if JHUB.contains(jh_get_food_jokers(), context.destroyed_card.ability.name) then
 					card.ability.extra.x_mult = card.ability.extra.x_mult + card.ability.extra.scaling
 					return {
 						message = localize('k_upgrade_ex'),
