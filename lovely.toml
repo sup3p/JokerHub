@@ -135,7 +135,7 @@ if ((G.GAME.dollars-G.GAME.bankrupt_at) - 10 >= 0) and
 '''
 position = "at"
 payload = '''
-local reroll_cost = G.GAME.selected_back.effect.center.key == "b_jokerhub_film_deck" and 5 or 10
+local reroll_cost = (G.GAME.selected_back.effect.center.key == "b_jokerhub_film_deck") and 5 or 10
 if ((G.GAME.dollars-G.GAME.bankrupt_at) - reroll_cost >= 0) and
 '''
 match_indent = true
@@ -149,11 +149,11 @@ if not G.from_boss_tag then ease_dollars(-10) end
 '''
 position = "at"
 payload = '''
-local reroll_cost = G.GAME.selected_back.effect.center.key == "b_jokerhub_film_deck" and 5 or 10
+local reroll_cost = (G.GAME.selected_back.effect.center.key == "b_jokerhub_film_deck") and 5 or 10
 if not G.from_boss_tag then ease_dollars(-reroll_cost) end
 '''
 match_indent = true
-times = 1
+times = 2
 
 [[patches]]
 [patches.pattern]
