@@ -5,6 +5,7 @@ local ENABLED_JOKERS = {
 	"broker",
 	"rekoj",
 	"da_joki",
+	"mulligan",
 	--Uncommon
 	"orb_of_confusion",
 	"going_viral",
