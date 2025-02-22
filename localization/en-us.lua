@@ -146,6 +146,15 @@ return {
                     "owned {C:attention}Jokers{} are {C:blue}Common{}.",
                 }
             },
+            j_jokerhub_mulligan = {
+                name = 'Mulligan',
+                text = {
+                    "If played hand scores",
+                    "{C:attention}#1#%{} or less of required",
+                    "chips, gain {C:blue}+#2#{} hand",
+                    "{C:inactive}(Max of {C:blue}#3#{C:inactive} per round)"
+                }
+            },
         },
         Other={
             jokerhub_pink_sticker = {
@@ -212,7 +221,9 @@ return {
         suits_plural={},
         suits_singular={},
         tutorial={},
-        v_dictionary={},
+        v_dictionary={
+            a_discards="+#1# Discards",
+        },
         v_text={},
     },
 }

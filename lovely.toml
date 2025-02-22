@@ -96,6 +96,7 @@ else
 local brokers = SMODS.find_card("j_jokerhub_broker")
 for i = 1, #brokers do
 	brokers[i].ability.extra.chips = brokers[i].ability.extra.chips + G.GAME.interest_amount*math.min(math.floor(G.GAME.dollars/5), G.GAME.interest_cap/5)*brokers[i].ability.extra.scaling*(G.GAME.soil_mod or 1)
+	JHUB.scale_group_chat()
 	SMODS.calculate_effect({
 		message = localize('k_upgrade_ex'),
 		colour = G.C.CHIPS,
@@ -134,7 +135,7 @@ if ((G.GAME.dollars-G.GAME.bankrupt_at) - 10 >= 0) and
 '''
 position = "at"
 payload = '''
-local reroll_cost = G.GAME.selected_back.effect.center.key == "b_jokerhub_film_deck" and 5 or 10
+local reroll_cost = (G.GAME.selected_back.effect.center.key == "b_jokerhub_film_deck") and 5 or 10
 if ((G.GAME.dollars-G.GAME.bankrupt_at) - reroll_cost >= 0) and
 '''
 match_indent = true
@@ -148,11 +149,11 @@ if not G.from_boss_tag then ease_dollars(-10) end
 '''
 position = "at"
 payload = '''
-local reroll_cost = G.GAME.selected_back.effect.center.key == "b_jokerhub_film_deck" and 5 or 10
+local reroll_cost = (G.GAME.selected_back.effect.center.key == "b_jokerhub_film_deck") and 5 or 10
 if not G.from_boss_tag then ease_dollars(-reroll_cost) end
 '''
 match_indent = true
-times = 1
+times = 2
 
 [[patches]]
 [patches.pattern]
@@ -179,7 +180,7 @@ if forced_key and not G.GAME.banned_keys[forced_key] then
 '''
 position = "at"
 payload = '''
-if forced_key and (not G.GAME.banned_keys[forced_key] or (G.GAME.modifiers.jh_chef_ignores_bans and jh_contains(jh_get_food_jokers(), forced_key))) then 
+if forced_key and (not G.GAME.banned_keys[forced_key] or (G.GAME.modifiers.jh_chef_ignores_bans and JHUB.contains(jh_get_food_jokers(), forced_key))) then 
 '''
 match_indent = true
 times = 1

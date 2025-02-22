@@ -13,13 +13,4 @@ SMODS.Back{
     config = {
 		voucher = "v_directors_cut"
 	},
-    apply = function()
-		
-        G.E_MANAGER:add_event(Event({
-            func = function()
-                
-                return true
-            end
-        }))
-    end
 }

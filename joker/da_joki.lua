@@ -27,7 +27,7 @@ SMODS.Joker {
 					if context.scoring_name == card.ability.extra.hand_type then
 						card.ability.extra.mult = card.ability.extra.mult + card.ability.extra.scaling * (G.GAME.soil_mod or 1)
 						card.ability.extra.hand_type = nil
-						jh_scale_group_chat()
+						JHUB.scale_group_chat()
 						return {
 						  message = localize('k_upgrade_ex'),
 						  colour = G.C.MULT,
