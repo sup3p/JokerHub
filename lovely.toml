@@ -96,6 +96,7 @@ else
 local brokers = SMODS.find_card("j_jokerhub_broker")
 for i = 1, #brokers do
 	brokers[i].ability.extra.chips = brokers[i].ability.extra.chips + G.GAME.interest_amount*math.min(math.floor(G.GAME.dollars/5), G.GAME.interest_cap/5)*brokers[i].ability.extra.scaling*(G.GAME.soil_mod or 1)
+	JHUB.scale_group_chat()
 	SMODS.calculate_effect({
 		message = localize('k_upgrade_ex'),
 		colour = G.C.CHIPS,
