@@ -198,7 +198,7 @@ perma_bonus = self.ability and self.ability.perma_bonus or 0,
 '''
 position = "after"
 payload = '''
-jh_mult_perma_bonus = self.ability and self.ability.perma_bonus or 0,
+jh_mult_perma_bonus = self.ability and self.ability.jh_mult_perma_bonus or 0,
 '''
 match_indent = true
 times = 1
