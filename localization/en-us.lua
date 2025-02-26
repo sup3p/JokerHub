@@ -220,7 +220,9 @@ return {
             c_jokerhub_dinner_time = "Dinner Time"
         },
         collabs={},
-        dictionary={},
+        dictionary={
+            k_jokerhub_syphon = "Syphoned!",
+        },
         high_scores={},
         labels={},
         poker_hand_descriptions={},
@@ -231,7 +233,6 @@ return {
         suits_singular={},
         tutorial={},
         v_dictionary={
-            k_jokerhub_syphon = "Syphoned!"
             a_discards="+#1# Discards",
         },
         v_text={},

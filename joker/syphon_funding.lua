@@ -35,7 +35,7 @@ SMODS.Joker {
 				end
 				if syphoned_something then
 					return {
-						message = message = localize('k_jokerhub_syphon'),
+						message = localize('k_jokerhub_syphon'),
 						card = card,
 						colour = G.C.GREEN,
 					}
