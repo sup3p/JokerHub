@@ -155,6 +155,15 @@ return {
                     "{C:inactive}(Max of {C:blue}#3#{C:inactive} per round)"
                 }
             },
+            j_jokerhub_syphon_funding = {
+                name = 'Syphon Funding',
+                text = {
+                    "Debuff jokers to the right",
+                    "when {C:attention}Blind{} is selected",
+                    "Earn {C:money}$#1#{} at end of round for",
+                    "each joker debuffed this way"
+                }
+            },
         },
         Other={
             jokerhub_pink_sticker = {
@@ -222,6 +231,7 @@ return {
         suits_singular={},
         tutorial={},
         v_dictionary={
+            k_jokerhub_syphon = "Syphoned!"
             a_discards="+#1# Discards",
         },
         v_text={},

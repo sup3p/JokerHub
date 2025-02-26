@@ -245,3 +245,22 @@ payload = '''
 '''
 match_indent = true
 times = 1
+
+
+# -----------------------------------
+# Syphon Funding
+# -----------------------------------
+
+[[patches]]
+[patches.pattern]
+target = "functions/state_events.lua"
+pattern = "add_round_eval_row({name = 'bottom', dollars = dollars})"
+position = "after"
+payload = '''
+
+for i = 1, #G.jokers.cards do
+	SMODS.debuff_card(G.jokers.cards[i], false, "jh_syphon")
+end
+'''
+match_indent = true
+times = 1
