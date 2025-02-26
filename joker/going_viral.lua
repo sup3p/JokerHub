@@ -22,8 +22,7 @@ SMODS.Joker {
 	calculate = function(self, card, context)
 		if not card.debuff then
 			if context.cardarea == G.jokers and context.before and not (context.individual or context.repetition) and not context.blueprint then
-				card.ability.extra.mult = card.ability.extra.mult + card.ability.extra.scaling * (G.GAME.soil_mod or 1)
-				JHUB.scale_group_chat()
+				card.ability.extra.mult = card:scale_value(card.ability.extra.mult, card.ability.extra.scaling)
 				return {
 				  message = localize('k_upgrade_ex'),
 				  colour = G.C.MULT,

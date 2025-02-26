@@ -37,13 +37,9 @@ function JHUB.pick_new_rank(exclude_rank)
 end
 
 --For cross-mod compatibility with Maximus
-function JHUB.scale_group_chat()
-	local groupchats = SMODS.find_card('j_mxms_group_chat')
-	if next(groupchats) then
-		for k, v in pairs(groupchats) do
-			v.ability.extra.chips = v.ability.extra.chips + 2 * G.GAME.soil_mod
-			v:juice_up(0.3, 0.4)
-		end
+if not Card.scale_value then
+	function Card:scale_value(applied_value, scalar)
+		return applied_value + scalar
 	end
 end
 
