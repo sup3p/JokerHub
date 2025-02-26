@@ -33,20 +33,7 @@ SMODS.Joker {
 			--Destroying
 			if context.cardarea == G.jokers and context.after then
 				if pseudorandom(pseudoseed("demoncore"..G.GAME.round_resets.ante)) < G.GAME.probabilities.normal / card.ability.extra.odds then
-					local pessimistics = SMODS.find_card('j_mxms_pessimistic')
-                    if next(pessimistics) then
-                        for k, v in pairs(pessimistics) do
-                            v.ability.extra.mult = v.ability.extra.mult +
-                                (card.ability.extra.odds - G.GAME.probabilities.normal) * G.GAME.soil_mod
-                            G.E_MANAGER:add_event(Event({
-                                trigger = 'after',
-                                func = function()
-                                    v:juice_up(0.3, 0.4)
-                                    return true;
-                                end
-                            }))
-                        end
-                    end
+					if mxms_scale_pessimistics then mxms_scale_pessimistics(G.GAME.probabilities.normal, card.ability.extra.odds) end
 					for i = 1, #G.jokers.cards do
 						if not G.jokers.cards[i].ability.eternal then
 							G.jokers.cards[i].getting_sliced = true
