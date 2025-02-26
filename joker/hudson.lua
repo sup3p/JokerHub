@@ -5,9 +5,7 @@ SMODS.Joker {
 	config = {
 		extra = {
 			incompatible_jokers = {
-				--"j_mime",
-				--"j_blueprint",
-				--"j_brainstorm"
+				"j_jokerhub_hudson"
 			}
 		}
 	},
@@ -25,7 +23,7 @@ SMODS.Joker {
 	eternal_compat = true,
 	perishable_compat = true,
 	calculate = function(self, card, context)
-		if not card.debuff and not context.no_blueprint then
+		if not card.debuff and not context.no_blueprint and not context.is_hudson_copy then
 			local other_joker = nil
 			for i = 1, #G.jokers.cards do
 				if G.jokers.cards[i] == card then other_joker = G.jokers.cards[i-1] end
@@ -55,6 +53,7 @@ SMODS.Joker {
 									scoring_hand = context.scoring_hand,
 									scoring_name = context.scoring_name,
 									poker_hands = context.poker_hands,
+									is_hudson_copy = true,
 									repetition = true,
 									card_effects = { eval_card(held_card, context) } -- this is the table of effects that has been calculated
 								}
