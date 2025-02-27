@@ -6,7 +6,7 @@
 ## Current Additions
 - 15 new Jokers
     - 4 Commons
-    - 7 Uncommons
+    - 8 Uncommons
     - 4 Rares
     - 1 Legendary
 - 2 new Stakes
