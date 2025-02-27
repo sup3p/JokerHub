@@ -25,9 +25,8 @@ SMODS.Joker {
 			if context.cardarea == G.jokers and context.before and not (context.individual or context.repetition) and not context.blueprint then
 				if card.ability.extra.hand_type then
 					if context.scoring_name == card.ability.extra.hand_type then
-						card.ability.extra.mult = card.ability.extra.mult + card.ability.extra.scaling * (G.GAME.soil_mod or 1)
+						card.ability.extra.mult = card:scale_value(card.ability.extra.mult, card.ability.extra.scaling)
 						card.ability.extra.hand_type = nil
-						JHUB.scale_group_chat()
 						return {
 						  message = localize('k_upgrade_ex'),
 						  colour = G.C.MULT,

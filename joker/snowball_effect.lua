@@ -23,8 +23,7 @@ SMODS.Joker {
 			--Upgrade/Reset
 			if context.end_of_round and not context.repetition and not context.individual and not context.blueprint then
 				if G.GAME.current_round.hands_played <= 1 then
-					card.ability.extra.x_mult = card.ability.extra.x_mult + card.ability.extra.scaling * (G.GAME.soil_mod or 1)
-					JHUB.scale_group_chat()
+					card.ability.extra.x_mult = card:scale_value(card.ability.extra.x_mult, card.ability.extra.scaling)
 					return {
 					  message = localize('k_upgrade_ex'),
 					  colour = G.C.MULT,

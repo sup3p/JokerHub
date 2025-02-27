@@ -155,6 +155,16 @@ return {
                     "{C:inactive}(Max of {C:blue}#3#{C:inactive} per round)"
                 }
             },
+            j_jokerhub_syphon_funding = {
+                name = 'Syphon Funding',
+                text = {
+                    "Debuff jokers to the right",
+                    "when {C:attention}Blind{} is selected",
+                    "Earns {C:money}triple{} the sell value",
+                    "of each joker debuffed this",
+                    "way at end of round"
+                }
+            },
         },
         Other={
             jokerhub_pink_sticker = {
@@ -211,7 +221,9 @@ return {
             c_jokerhub_dinner_time = "Dinner Time"
         },
         collabs={},
-        dictionary={},
+        dictionary={
+            k_jokerhub_syphon = "Syphoned!",
+        },
         high_scores={},
         labels={},
         poker_hand_descriptions={},

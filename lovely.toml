@@ -95,8 +95,8 @@ payload = '''
 else
 local brokers = SMODS.find_card("j_jokerhub_broker")
 for i = 1, #brokers do
-	brokers[i].ability.extra.chips = brokers[i].ability.extra.chips + G.GAME.interest_amount*math.min(math.floor(G.GAME.dollars/5), G.GAME.interest_cap/5)*brokers[i].ability.extra.scaling*(G.GAME.soil_mod or 1)
-	JHUB.scale_group_chat()
+	local chips_to_add = G.GAME.interest_amount*math.min(math.floor(G.GAME.dollars/5), G.GAME.interest_cap/5)*brokers[i].ability.extra.scaling
+	brokers[i].ability.extra.chips = brokers[i]:scale_value(brokers[i].ability.extra.chips, chips_to_add)
 	SMODS.calculate_effect({
 		message = localize('k_upgrade_ex'),
 		colour = G.C.CHIPS,
@@ -198,7 +198,7 @@ perma_bonus = self.ability and self.ability.perma_bonus or 0,
 '''
 position = "after"
 payload = '''
-jh_mult_perma_bonus = self.ability and self.ability.perma_bonus or 0,
+jh_mult_perma_bonus = self.ability and self.ability.jh_mult_perma_bonus or 0,
 '''
 match_indent = true
 times = 1
@@ -242,6 +242,25 @@ payload = '''
 	if specific_vars and specific_vars.jh_bonus_mult then
 		localize{type = 'other', key = 'jokerhub_card_extra_mult', nodes = desc_nodes, vars = {specific_vars.jh_bonus_mult}}
 	end
+'''
+match_indent = true
+times = 1
+
+
+# -----------------------------------
+# Syphon Funding
+# -----------------------------------
+
+[[patches]]
+[patches.pattern]
+target = "functions/state_events.lua"
+pattern = "add_round_eval_row({name = 'bottom', dollars = dollars})"
+position = "after"
+payload = '''
+
+for i = 1, #G.jokers.cards do
+	SMODS.debuff_card(G.jokers.cards[i], false, "jh_syphon")
+end
 '''
 match_indent = true
 times = 1
