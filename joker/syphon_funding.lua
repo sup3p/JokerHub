@@ -2,7 +2,7 @@ SMODS.Joker {
 	key = "syphon_funding",
 	config = {
 		extra = {
-			dollars = 8
+			dollars = 3
 		}
 	},
 	rarity = 2,
@@ -44,10 +44,10 @@ SMODS.Joker {
 		end
 	end,
 	calc_dollar_bonus = function(self, card)
-		local count = 0
+		local earnings = 0
 		for i = 1, #G.jokers.cards do
-			if G.jokers.cards[i].jh_syphoned then count = count + 1 end
+			if G.jokers.cards[i].jh_syphoned then earnings = earnings + (G.jokers.cards[i].sell_cost * card.ability.extra.dollars) end
 		end
-		return count * card.ability.extra.dollars
+		return earnings
 	end
 }

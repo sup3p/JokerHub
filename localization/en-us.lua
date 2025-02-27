@@ -160,8 +160,9 @@ return {
                 text = {
                     "Debuff jokers to the right",
                     "when {C:attention}Blind{} is selected",
-                    "Earn {C:money}$#1#{} at end of round for",
-                    "each joker debuffed this way"
+                    "Earns {C:money}triple{} the sell value",
+                    "of each joker debuffed this",
+                    "way at end of round"
                 }
             },
         },
