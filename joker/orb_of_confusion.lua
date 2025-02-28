@@ -2,12 +2,12 @@ SMODS.Joker {
 	key = "orb_of_confusion",
 	config = {
 		extra = {
-			x_mult = 3
+			Xmult = 3
 		}
 	},
 	rarity = 2,
 	loc_vars = function(self, info_queue, card)
-		return {vars = {card.ability.extra.x_mult}}
+		return {vars = {card.ability.extra.Xmult}}
 	end,
 	atlas = "atlas_jokers",
 	pos = { x = 1, y = 0 },
@@ -36,8 +36,8 @@ SMODS.Joker {
 			--Scoring
 			if context.joker_main then
 				return {
-				  Xmult_mod = card.ability.extra.x_mult,
-				  message = localize { type = 'variable', key = 'a_xmult', vars = { card.ability.extra.x_mult } },
+				  Xmult_mod = card.ability.extra.Xmult,
+				  message = localize { type = 'variable', key = 'a_xmult', vars = { card.ability.extra.Xmult } },
 				  card = card,
 				}
 			end

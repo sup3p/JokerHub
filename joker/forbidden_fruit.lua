@@ -2,7 +2,7 @@ SMODS.Joker {
 	key = "forbidden_fruit",
 	config = {
 		extra = {
-			x_mult = 1,
+			Xmult = 1,
 			scaling = 0.1,
 			rank = JHUB.pick_new_rank(0)
 		}
@@ -21,7 +21,7 @@ SMODS.Joker {
 		else
 			visible_rank = tostring(card.ability.extra.rank)
 		end
-		return {vars = {card.ability.extra.x_mult, card.ability.extra.scaling, visible_rank}}
+		return {vars = {card.ability.extra.Xmult, card.ability.extra.scaling, visible_rank}}
 	end,
 	atlas = "atlas_jokers",
 	pos = { x = 0, y = 0 },
@@ -52,7 +52,7 @@ SMODS.Joker {
 					end
 				end
 				if reset then
-					card.ability.extra.x_mult = 1
+					card.ability.extra.Xmult = 1
 					G.E_MANAGER:add_event(Event({
 						func = function()
 							play_sound('tarot1')
@@ -75,7 +75,7 @@ SMODS.Joker {
 						--card = card
 					}
 				else
-					card.ability.extra.x_mult = card:scale_value(card.ability.extra.x_mult, card.ability.extra.scaling)
+					card.ability.extra.Xmult = card:scale_value(card.ability.extra.Xmult, card.ability.extra.scaling)
 					return {
 					  message = localize('k_upgrade_ex'),
 					  colour = G.C.MULT,
@@ -85,10 +85,10 @@ SMODS.Joker {
 			end
 			
 			--Scoring
-			if context.joker_main and not card.debuff and card.ability.extra.x_mult ~= 1 then
+			if context.joker_main and not card.debuff and card.ability.extra.Xmult ~= 1 then
 				return {
-				  Xmult_mod = card.ability.extra.x_mult,
-				  message = localize { type = 'variable', key = 'a_xmult', vars = { card.ability.extra.x_mult } },
+				  Xmult_mod = card.ability.extra.Xmult,
+				  message = localize { type = 'variable', key = 'a_xmult', vars = { card.ability.extra.Xmult } },
 				  card = card,
 				}
 			end
