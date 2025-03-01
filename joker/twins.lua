@@ -6,7 +6,7 @@ SMODS.Joker {
 	},
 	rarity = 2,
 	loc_vars = function(self, info_queue, card)
-		return {vars = {card.ability.extra.Xmult}}
+		return {vars = {card.ability.extra.x_mult}}
 	end,
 	atlas = "atlas_jokers",
 	pos = { x = 1, y = 1 },

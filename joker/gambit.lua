@@ -4,7 +4,7 @@ function Card.remove(self)
 		for k, v in ipairs(G.jokers.cards) do
 			if v.config.center_key == 'j_jokerhub_gambit' then
 				if JHUB.is_food(self) then
-					v.ability.extra.Xmult = v:scale_value(v.ability.extra.Xmult, v.ability.extra.scaling)
+					v.ability.extra.x_mult = v:scale_value(v.ability.extra.x_mult, v.ability.extra.scaling)
 					SMODS.calculate_effect({
 						message = localize('k_upgrade_ex'),
 						colour = G.C.MULT,
@@ -22,13 +22,13 @@ SMODS.Joker {
 	key = "gambit",
 	config = {
 		extra = {
-			Xmult = 1,
+			x_mult = 1,
 			scaling = 1
 		}
 	},
 	rarity = 2,
 	loc_vars = function(self, info_queue, card)
-		return {vars = {card.ability.extra.Xmult, card.ability.extra.scaling}}
+		return {vars = {card.ability.extra.x_mult, card.ability.extra.scaling}}
 	end,
 	atlas = "atlas_jokers",
 	pos = { x = 2, y = 2 },
@@ -45,7 +45,7 @@ SMODS.Joker {
 			if context.destroying_cards then
 				print(context.destroyed_card.ability.name)
 				if JHUB.contains(jh_get_food_jokers(), context.destroyed_card.ability.name) then
-					card.ability.extra.Xmult = card.ability.extra.Xmult + card.ability.extra.scaling
+					card.ability.extra.x_mult = card.ability.extra.x_mult + card.ability.extra.scaling
 					return {
 						message = localize('k_upgrade_ex'),
 						colour = G.C.MULT,
@@ -55,10 +55,10 @@ SMODS.Joker {
 			end]]
 			
 			--Scoring
-			if context.joker_main and not card.debuff and card.ability.extra.Xmult ~= 1 then
+			if context.joker_main and not card.debuff and card.ability.extra.x_mult ~= 1 then
 				return {
-				  Xmult_mod = card.ability.extra.Xmult,
-				  message = localize { type = 'variable', key = 'a_xmult', vars = { card.ability.extra.Xmult } },
+				  Xmult_mod = card.ability.extra.x_mult,
+				  message = localize { type = 'variable', key = 'a_xmult', vars = { card.ability.extra.x_mult } },
 				  card = card,
 				}
 			end

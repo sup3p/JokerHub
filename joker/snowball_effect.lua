@@ -2,13 +2,13 @@ SMODS.Joker {
 	key = "snowball_effect",
 	config = {
 		extra = {
-			Xmult = 1,
+			x_mult = 1,
 			scaling = 0.5
 		}
 	},
 	rarity = 2,
 	loc_vars = function(self, info_queue, card)
-		return {vars = {card.ability.extra.Xmult, card.ability.extra.scaling}}
+		return {vars = {card.ability.extra.x_mult, card.ability.extra.scaling}}
 	end,
 	atlas = "atlas_jokers",
 	pos = { x = 3, y = 0 },
@@ -23,14 +23,14 @@ SMODS.Joker {
 			--Upgrade/Reset
 			if context.end_of_round and not context.repetition and not context.individual and not context.blueprint then
 				if G.GAME.current_round.hands_played <= 1 then
-					card.ability.extra.Xmult = card:scale_value(card.ability.extra.Xmult, card.ability.extra.scaling)
+					card.ability.extra.x_mult = card:scale_value(card.ability.extra.x_mult, card.ability.extra.scaling)
 					return {
 					  message = localize('k_upgrade_ex'),
 					  colour = G.C.MULT,
 					  card = card
 					}
-				elseif card.ability.extra.Xmult > 1 then
-					card.ability.extra.Xmult = 1
+				elseif card.ability.extra.x_mult > 1 then
+					card.ability.extra.x_mult = 1
 					return {
 						message = localize('k_reset'),
 						colour = G.C.RED
@@ -39,10 +39,10 @@ SMODS.Joker {
 			end
 			
 			--Scoring
-			if context.joker_main and not card.debuff and card.ability.extra.Xmult > 1 then
+			if context.joker_main and not card.debuff and card.ability.extra.x_mult > 1 then
 				return {
-				  Xmult_mod = card.ability.extra.Xmult,
-				  message = localize { type = 'variable', key = 'a_xmult', vars = { card.ability.extra.Xmult } },
+				  Xmult_mod = card.ability.extra.x_mult,
+				  message = localize { type = 'variable', key = 'a_xmult', vars = { card.ability.extra.x_mult } },
 				  card = card,
 				}
 			end

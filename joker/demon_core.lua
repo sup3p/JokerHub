@@ -2,13 +2,13 @@ SMODS.Joker {
 	key = "demon_core",
 	config = {
 		extra = {
-			Xmult = 4,
+			x_mult = 4,
 			odds = 90
 		}
 	},
 	rarity = 3,
 	loc_vars = function(self, info_queue, card)
-		return {vars = {card.ability.extra.Xmult, G.GAME.probabilities.normal, card.ability.extra.odds}}
+		return {vars = {card.ability.extra.x_mult, G.GAME.probabilities.normal, card.ability.extra.odds}}
 	end,
 	atlas = "atlas_jokers",
 	pos = { x = 0, y = 1 },
@@ -24,8 +24,8 @@ SMODS.Joker {
 			--Scoring
 			if context.joker_main then
 				return {
-				  Xmult_mod = card.ability.extra.Xmult,
-				  message = localize { type = 'variable', key = 'a_xmult', vars = { card.ability.extra.Xmult } },
+				  Xmult_mod = card.ability.extra.x_mult,
+				  message = localize { type = 'variable', key = 'a_xmult', vars = { card.ability.extra.x_mult } },
 				  card = card,
 				}
 			end
@@ -48,7 +48,7 @@ SMODS.Joker {
 						end
                     return true end }))
 					return {
-					  message = "Irradiated!",--localize { type = 'variable', key = 'a_xmult', vars = { card.ability.extra.Xmult } },
+					  message = "Irradiated!",--localize { type = 'variable', key = 'a_xmult', vars = { card.ability.extra.x_mult } },
 					  card = card,
 					  colour = G.C.GREEN,
 					}
