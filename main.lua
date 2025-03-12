@@ -8,6 +8,7 @@ JHUB.ENABLED_JOKERS = {
 	"rekoj",
 	"da_joki",
 	"mulligan",
+	"leap_frog",
 	--Uncommon
 	"orb_of_confusion",
 	"going_viral",

@@ -165,6 +165,15 @@ return {
                     "way at end of round"
                 }
             },
+            j_jokerhub_leap_frog = {
+                name = 'Leap Frog',
+                text = {
+                    "{C:chips}+#1#{} Chips per {C:attention}Joker{} to the left if",
+                    "there are more than there were",
+                    "during any hand this round",
+                    "{C:inactive}(Currently {C:attention}#2#{C:inactive} Jokers)"
+                }
+            },
         },
         Other={
             jokerhub_pink_sticker = {
