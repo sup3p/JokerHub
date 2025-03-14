@@ -23,6 +23,7 @@ JHUB.ENABLED_JOKERS = {
 	"demon_core",
 	"last_hurrah",
 	"garbage_bag",
+	"long_time_friends",
 	--Legendary
 	"hudson",
 }

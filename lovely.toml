@@ -203,3 +203,39 @@ end
 '''
 match_indent = true
 times = 1
+
+
+# -----------------------------------
+# Long Time Friends
+# -----------------------------------
+
+[[patches]]
+[patches.pattern]
+target = "card.lua"
+pattern = '''if (G.SETTINGS.tutorial_complete or G.GAME.pseudorandom.seed ~= 'TUTORIAL' or G.GAME.round_resets.ante > 1) and'''
+position = "before"
+payload = '''
+--Check for a non-debuffed LTF
+local negate_eternal = false
+for key, ltf_card in pairs(SMODS.find_card("j_jokerhub_long_time_friends")) do
+	if not ltf_card.debuff then
+		negate_eternal = true
+		break
+	end
+end
+'''
+match_indent = true
+times = 1
+
+[[patches]]
+[patches.pattern]
+target = "card.lua"
+pattern = '''self.area.config.type == 'joker' and
+        not self.ability.eternal then'''
+position = "at"
+payload = '''
+self.area.config.type == 'joker' and
+(not self.ability.eternal or negate_eternal) then
+'''
+match_indent = true
+times = 1

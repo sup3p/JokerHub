@@ -174,6 +174,15 @@ return {
                     "{C:inactive}(Currently {C:attention}#2#{C:inactive} Jokers)"
                 }
             },
+            j_jokerhub_long_time_friends = {
+                name = 'Long Time Friends',
+                text = {
+                    "{C:attention}Eternal{} jokers can be sold.",
+                    "This Joker gains {X:mult,C:white}X#2#{} Mult",
+                    "when an {C:attention}Eternal{} joker is sold",
+                    "{C:inactive}(Currently {X:mult,C:white} X#1# {C:inactive} Mult)"
+                }
+            },
         },
         Other={
             jokerhub_pink_sticker = {
