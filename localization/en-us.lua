@@ -183,6 +183,15 @@ return {
                     "{C:inactive}(Currently {X:mult,C:white} X#1# {C:inactive} Mult)"
                 }
             },
+            j_jokerhub_amamiya = {
+                name = 'Amamiya',
+                text = {
+                    "When {C:attention}Boss Blind{} is defeated,",
+                    "this Joker permanantly gains",
+                    "an {C:attention}ability{} based on",
+                    "the {C:attention}Boss Blind{}"
+                }
+            },
         },
         Other={
             jokerhub_pink_sticker = {
@@ -203,7 +212,140 @@ return {
             },
             jokerhub_card_extra_mult = {
                 text = { "{C:mult}+#1#{} extra mult" }
-            }
+            },
+            jokerhub_amamiya_ability_bl_manacle = {
+                name = "The Manacle's Heart",
+                text = { "{C:attention}+#1#{} hand size" }
+            },
+            jokerhub_amamiya_ability_bl_ox = {
+                name = "The Ox's Heart",
+                text = {
+                    "Earn {C:money}$#1#{} when your most",
+                    "played {C:attention}poker hand{} is played"
+                }
+            },
+            jokerhub_amamiya_ability_bl_wall = {
+                name = "The Wall's Heart",
+                text = { "{X:mult,C:white}X#1#{} Mult" }
+            },
+            jokerhub_amamiya_ability_bl_final_vessel = {
+                name = "Violet Vessel's Heart",
+                text = { "{X:mult,C:white}X#1#{} Mult" }
+            },
+            jokerhub_amamiya_ability_bl_arm = {
+                name = "The Arm's Heart",
+                text = {
+                    "Upgrade level of {C:attention}first{} played",
+                    "{C:attention}poker hand{} each round"
+                }
+            },
+            jokerhub_amamiya_ability_bl_club = {
+                name = "The Club's Heart",
+                text = {
+                    "Retrigger all",
+                    "played {C:club}Club{} cards",
+                }
+            },
+            jokerhub_amamiya_ability_bl_goad = {
+                name = "The Goad's Heart",
+                text = {
+                    "Retrigger all",
+                    "played {C:spades}Spade{} cards",
+                }
+            },
+            jokerhub_amamiya_ability_bl_window = {
+                name = "The Window's Heart",
+                text = {
+                    "Retrigger all",
+                    "played {C:diamonds}Diamond{} cards",
+                }
+            },
+            jokerhub_amamiya_ability_bl_head = {
+                name = "The Head's Heart",
+                text = {
+                    "Retrigger all",
+                    "played {C:hearts}Heart{} cards",
+                }
+            },
+            jokerhub_amamiya_ability_bl_plant = {
+                name = "The Plant's Heart",
+                text = {
+                    "Retrigger all",
+                    "played {C:attention}face{} cards",
+                }
+            },
+            jokerhub_amamiya_ability_bl_pillar = {
+                name = "The Pillar's Heart",
+                text = {
+                    "Every played {C:attention}card{}",
+                    "permanently gains",
+                    "{C:mult}+#1#{} Mult when scored",
+                },
+            },
+            jokerhub_amamiya_ability_bl_water = {
+                name = "The Water's Heart",
+                text = {
+                    "{C:red}+#1#{} discard",
+                    "each round",
+                }
+            },
+            jokerhub_amamiya_ability_bl_needle = {
+                name = "The Needle's Heart",
+                text = {
+                    "{C:blue}+#1#{} hand",
+                    "each round",
+                }
+            },
+            jokerhub_amamiya_ability_bl_final_leaf = {
+                name = "Verdant Leaf's Heart",
+                text = { "{C:dark_edition}+#1#{} Joker slot" }
+            },
+            jokerhub_amamiya_ability_bl_tooth = {
+                name = "The Tooth's Heart",
+                text = {
+                    "Earn {C:money}$#1#{} per scored",
+                    "card played"
+                }
+            },
+            jokerhub_amamiya_ability_bl_flint = {
+                name = "The Flint's Heart",
+                text = {
+                    "{X:mult,C:white}X#1#{} Mult and {X:chips,C:white}X#2#{} Chips",
+                    "before cards are scored"
+                }
+            },
+            jokerhub_amamiya_ability_bl_final_bell = {
+                name = "Cerulean Bell's Heart",
+                text = {
+                    "Retrigger a {C:attention}random{} played",
+                    "card used in scoring",
+                    "{C:attention}#1#{} additional times",
+                }
+            },
+            jokerhub_amamiya_ability_bl_ReduxArcanum_bane = {
+                name = "The Bane's Heart",
+                text = { "{C:attention}+#1#{} consumable slot" }
+            },
+            jokerhub_amamiya_ability_unknown = {
+                name = "Unknown Blind's Heart",
+                text = { "{C:chips}+#1#{} Chips" }
+            },
+            jokerhub_amamiya_ability_bl_hook = {
+                name = "The Hook's Heart",
+                text = {
+                    "If {C:attention}discarded{} hand",
+                    "contains exactly {C:attention}#2#{}",
+                    "cards, gain {C:red}+1{} discard",
+                    "{C:inactive}(Max of {C:red}+#1#{C:inactive} per round)"
+                }
+            },
+            jokerhub_amamiya_ability_bl_psychic = {
+                name = "The Psychic's Heart",
+                text = {
+                    "Every {C:attention}played card",
+                    "counts in scoring",
+                }
+            },
         },
         Planet={},
         Spectral={},

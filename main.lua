@@ -26,6 +26,7 @@ JHUB.ENABLED_JOKERS = {
 	"long_time_friends",
 	--Legendary
 	"hudson",
+	"amamiya",
 }
 
 JHUB.vanilla_food = {

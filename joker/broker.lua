@@ -23,10 +23,10 @@ SMODS.Joker {
 			--Scoring
 			if context.joker_main and card.ability.extra.chips > 0 then
 				return {
-				  chip_mod = card.ability.extra.chips,
-				  message = localize { type = 'variable', key = 'a_chips', vars = { card.ability.extra.chips } },
-				  colour = G.C.CHIPS,
-				  card = card,
+					chip_mod = card.ability.extra.chips,
+					message = localize { type = 'variable', key = 'a_chips', vars = { card.ability.extra.chips } },
+					colour = G.C.CHIPS,
+					card = card,
 				}
 			end
 		end
