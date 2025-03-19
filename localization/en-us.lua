@@ -192,6 +192,13 @@ return {
                     "the {C:attention}Boss Blind{}"
                 }
             },
+            j_jokerhub_metal_joker = {
+                name = 'Metal Joker',
+                text = {
+                    "{C:attention}Steel{} cards are considered",
+                    "{C:attention}Gold{} cards and vice versa"
+                }
+            },
         },
         Other={
             jokerhub_pink_sticker = {

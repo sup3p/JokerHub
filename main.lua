@@ -18,6 +18,7 @@ JHUB.ENABLED_JOKERS = {
 	"union_member_card",
 	"gambit",
 	"syphon_funding",
+	"metal_joker",
 	--Rare
 	"forbidden_fruit",
 	"demon_core",
