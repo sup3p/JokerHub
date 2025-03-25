@@ -87,3 +87,6 @@ end
 SMODS.current_mod.process_loc_text = function()
     
 end
+
+--Tailsman support
+to_big = to_big or function(value) return value end
