@@ -286,7 +286,7 @@ return {
                 text = {
                     "Every played {C:attention}card{}",
                     "permanently gains",
-                    "{C:mult}+#1#{} Mult when scored",
+                    "{C:chips}+#1#{} Chips when scored",
                 },
             },
             jokerhub_amamiya_ability_bl_water = {
@@ -352,6 +352,35 @@ return {
                     "Every {C:attention}played card",
                     "counts in scoring",
                 }
+            },
+            jokerhub_amamiya_ability_bl_mouth = {
+                name="The Mouth's Heart",
+                text={
+                    "{X:mult,C:white} X#1# {} Mult if played",
+                    "{C:attention}poker hand{} has already",
+                    "been played this round",
+                },
+            },
+            jokerhub_amamiya_ability_bl_eye = {
+                name="The Eye's Heart",
+                text={
+                    "{X:mult,C:white} X#1# {} Mult if played",
+                    "{C:attention}poker hand{} has not",
+                    "been played this round",
+                },
+            },
+            jokerhub_amamiya_ability_bl_final_heart = {
+                name="Crimson Heart's Heart",
+                text={
+                    "Retrigger {C:attention}#1#{}, joker",
+                    "changes each played hand",
+                },
+            },
+            jokerhub_amamiya_ability_bl_poke_cgoose = {
+                name="Chartreuse Chamber's Heart",
+                text={
+                    "{C:pink}+#1#{} Energy Limit",
+                },
             },
         },
         Planet={},

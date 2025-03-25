@@ -48,11 +48,11 @@ function JHUB.get_amamiya_effect(card, context, boss_key)
 		end
 	elseif boss_key == "bl_pillar" then --The Pillar
 		if not card.debuff and context.individual and context.cardarea == G.play then
-			context.other_card.ability.perma_mult = context.other_card.ability.perma_mult or 0
-			context.other_card.ability.perma_mult = context.other_card.ability.perma_mult + vars.mult
+			context.other_card.ability.perma_bonus = context.other_card.ability.perma_bonus or 0
+            context.other_card.ability.perma_bonus = context.other_card.ability.perma_bonus + vars.chips
 			return {
 				message = localize('k_upgrade_ex'),
-				colour = G.C.MULT,
+				colour = G.C.CHIPS,
 				card = card,
 				target_card = context.other_card
 			}
@@ -131,22 +131,58 @@ function JHUB.get_amamiya_effect(card, context, boss_key)
 		end
 	elseif boss_key == "bl_psychic" then --The Psychic
 		--Pass through
-	else --Default ability
-		--[[
-		local prepended_key = "jokerhub_amamiya_ability_"..boss_key
-		if context.add_to_deck and not G.localization.descriptions.Other[prepended_key] then
-			--Hook localization to add a new entry
-			local new_loc = {
-				name = G.localization.descriptions.Blind[boss_key].name.."'s Heart",
-				text = { "{C:chips}+#1#{} Chips" }
+	elseif boss_key == "bl_mouth" then --The Mouth
+		if G.GAME.hands[context.scoring_name] and G.GAME.hands[context.scoring_name].played_this_round > 1 then
+			return {
+				message = localize{type='variable',key='a_xmult',vars={vars.x_mult}},
+				Xmult_mod = vars.x_mult,
 			}
-			local old_loc_process = SMODS.find_mod("jokerhub")[1].process_loc_text
-			SMODS.find_mod("jokerhub")[1].process_loc_text = function()
-				G.localization.descriptions.Other[prepended_key] = new_loc
-				old_loc_process()
+		end
+	elseif boss_key == "bl_eye" then --The Eye
+		if not G.GAME.hands[context.scoring_name] or G.GAME.hands[context.scoring_name].played_this_round < 1 then
+			return {
+				message = localize{type='variable',key='a_xmult',vars={vars.x_mult}},
+				Xmult_mod = vars.x_mult,
+			}
+		end
+	elseif boss_key == "bl_final_heart" then --Crimson Heart
+		if (context.add_to_deck and not card.ability.extra.crimson_card) or (context.cardarea == G.jokers and context.after) then
+			card.ability.extra.crimson_card = {}
+			local valid_indexes = {}
+			for i = 1, #G.jokers.cards do
+				if G.jokers.cards[i].config.center_key ~= "j_jokerhub_amamiya" then table.insert(valid_indexes, i) end
 			end
-			init_localization()
-		end]]
+			local selected_index = pseudorandom_element(valid_indexes, pseudoseed("amamiya_crimson"))
+			card.ability.extra.crimson_card = {
+				name = localize{type="name_text", set=G.jokers.cards[selected_index].config.center.set, key=G.jokers.cards[selected_index].config.center.key},
+				id = G.jokers.cards[selected_index].ID
+			}
+		end
+		if context.retrigger_joker_check and not context.retrigger_joker and context.other_card.ability then
+            if context.other_card.ID == card.ability.extra.crimson_card.id then
+                return {
+                    message = localize('k_again_ex'),
+                    repetitions = 1,
+                    card = card
+                }
+            end
+        end
+	elseif boss_key == "bl_poke_cgoose" then --Chartreuse Chamber (Pokermon)
+		if context.add_to_deck then
+			if not G.GAME.energy_plus then
+				G.GAME.energy_plus = vars.energy
+			else
+				G.GAME.energy_plus = G.GAME.energy_plus + vars.energy
+			end
+		end
+		if context.remove_from_deck then
+			if not G.GAME.energy_plus then
+				G.GAME.energy_plus = 0
+			else
+				G.GAME.energy_plus = G.GAME.energy_plus - vars.energy
+			end
+		end
+	else --Default ability
 		if context.joker_main and not card.debuff then
 			return {
 				chip_mod = vars.chips,
@@ -163,19 +199,21 @@ function JHUB.get_amamiya_vars(card, boss_key, context)
 	if boss_key == "bl_manacle" then return { hand_size_mod = 1 } end --The Manacle
 	if boss_key == "bl_ox" then return { dollars = 4 } end --The Ox
 	if boss_key == "bl_wall" then return { x_mult = 2 } end --The Wall
-	if boss_key == "bl_final_vessel" then return { x_mult = 3 } end --Violet Vessel
+	if boss_key == "bl_final_vessel" or boss_key == "bl_mouth" or boss_key == "bl_eye" then return { x_mult = 3 } end --Violet Vessel/The Mouth/The Eye
 	if boss_key == "bl_club" then return { suit = "Clubs" } end --The Club
 	if boss_key == "bl_goad" then return { suit = "Spades" } end --The Spades
 	if boss_key == "bl_window" then return { suit = "Diamonds" } end --The Spades
 	if boss_key == "bl_head" then return { suit = "Hearts" } end --The Head
-	if boss_key == "bl_pillar" then return { mult = 1 } end --The Pillar
+	if boss_key == "bl_pillar" then return { chips = 5 } end --The Pillar
 	if boss_key == "bl_water" then return { discards = 1 } end --The Water
 	if boss_key == "bl_needle" then return { hands = 1 } end --The Needle
-	if boss_key == "bl_final_leaf" or boss_key == "bl_ReduxArcanum_bane" then return { slots = 1 } end --Verdant Leaf and The Bane
+	if boss_key == "bl_final_leaf" or boss_key == "bl_ReduxArcanum_bane" then return { slots = 1 } end --Verdant Leaf/The Bane
 	if boss_key == "bl_tooth" then return { dollars = 1 } end --The Tooth
 	if boss_key == "bl_flint" then return { x_mult = 1.5, x_chips = 1.5 } end --The Flint
 	if boss_key == "bl_final_bell" then return { repetitions = 3 } end --Cerulean Bell
 	if boss_key == "bl_hook" then return { cards = 2, max = 3, used = card.ability.extra.hook_used } end --The Hook
+	if boss_key == "bl_final_heart" then return { card_name = card.ability.extra.crimson_card and card.ability.extra.crimson_card.name or "nothing" } end --Crimson Heart
+	if boss_key == "bl_poke_cgoose" then return { energy = 2 } end --Chartreuse Chamber
 
 	return { chips = 125 }
 end
