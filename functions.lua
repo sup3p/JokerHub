@@ -37,11 +37,12 @@ function JHUB.pick_new_rank(exclude_rank)
 end
 
 --For cross-mod compatibility with Maximus
+--[[
 if not Card.scale_value then
 	function Card:scale_value(applied_value, scalar)
 		return applied_value + scalar
 	end
-end
+end]]
 
 -- Initialize Food pool if not existing, which may be created by other mods.
 -- Any joker can add itself to this pool by adding a pools table to its definition

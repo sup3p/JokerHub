@@ -96,7 +96,8 @@ else
 local brokers = SMODS.find_card("j_jokerhub_broker")
 for i = 1, #brokers do
 	local chips_to_add = G.GAME.interest_amount*math.min(math.floor(G.GAME.dollars/5), G.GAME.interest_cap/5)*brokers[i].ability.extra.scaling
-	brokers[i].ability.extra.chips = brokers[i]:scale_value(brokers[i].ability.extra.chips, chips_to_add)
+	brokers[i].ability.extra.chips = brokers[i].ability.extra.chips + chips_to_add
+	if next(SMODS.find_mod("Maximus")) then SMODS.calculate_context({scaling_card = true}) end
 	SMODS.calculate_effect({
 		message = localize('k_upgrade_ex'),
 		colour = G.C.CHIPS,
