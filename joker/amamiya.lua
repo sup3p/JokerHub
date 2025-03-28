@@ -183,21 +183,22 @@ function JHUB.get_amamiya_effect(card, context, boss_key)
 			end
 		end
 	elseif boss_key == "bl_house" then --The House
-		if context.setting_blind and cardarea == G.jokers then
+		if context.setting_blind and context.cardarea == G.jokers then
 			for key, card in pairs(G.playing_cards) do
                 card.ability.jh_initial_hand = nil
             end
 		end
-		if context.first_hand_drawn and cardarea == G.jokers then
-			for key, card in pairs(G.hand) do
+		if context.first_hand_drawn and context.cardarea == G.jokers then
+			print(#G.hand.cards)
+			for key, card in pairs(G.hand.cards) do
                 card.ability.jh_initial_hand = true
             end
 		end
 		if context.individual and context.cardarea == G.hand then
-			if other_card.ability.jh_initial_hand and not other_card.debuff then
+			if context.other_card.ability.jh_initial_hand and not context.other_card.debuff then
 				return {
-					x_mult = self.ability.extra,
-					target_card = other_card
+					x_mult = vars.x_mult,
+					target_card = context.other_card
 				}
 			end
 		end
