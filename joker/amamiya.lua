@@ -182,6 +182,25 @@ function JHUB.get_amamiya_effect(card, context, boss_key)
 				G.GAME.energy_plus = G.GAME.energy_plus - vars.energy
 			end
 		end
+	elseif boss_key == "bl_house" then --The House
+		if context.setting_blind and cardarea == G.jokers then
+			for key, card in pairs(G.playing_cards) do
+                card.ability.jh_initial_hand = nil
+            end
+		end
+		if context.first_hand_drawn and cardarea == G.jokers then
+			for key, card in pairs(G.hand) do
+                card.ability.jh_initial_hand = true
+            end
+		end
+		if context.individual and context.cardarea == G.hand then
+			if other_card.ability.jh_initial_hand and not other_card.debuff then
+				return {
+					x_mult = self.ability.extra,
+					target_card = other_card
+				}
+			end
+		end
 	else --Default ability
 		if context.joker_main and not card.debuff then
 			return {
@@ -214,6 +233,7 @@ function JHUB.get_amamiya_vars(card, boss_key, context)
 	if boss_key == "bl_hook" then return { cards = 2, max = 3, used = card.ability.extra.hook_used } end --The Hook
 	if boss_key == "bl_final_heart" then return { card_name = card.ability.extra.crimson_card and card.ability.extra.crimson_card.name or "nothing" } end --Crimson Heart
 	if boss_key == "bl_poke_cgoose" then return { energy = 2 } end --Chartreuse Chamber
+	if boss_key == "bl_house" then return { x_mult = 1.5 } end --The House
 
 	return { chips = 125 }
 end

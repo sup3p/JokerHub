@@ -382,6 +382,13 @@ return {
                     "{C:pink}+#1#{} Energy Limit",
                 },
             },
+            jokerhub_amamiya_ability_bl_house = {
+                name="The House's Heart",
+                text={
+                    "Cards in the {C:attention}first drawn{} hand",
+                    "held in hand give {X:mult,C:white}X#1#{} Mult",
+                },
+            },
         },
         Planet={},
         Spectral={},
