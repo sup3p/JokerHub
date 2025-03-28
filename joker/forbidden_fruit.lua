@@ -75,7 +75,7 @@ SMODS.Joker {
 						--card = card
 					}
 				else
-					card.ability.extra.x_mult = card.ability.extra.x_mult + card.ability.extra.scaling\
+					card.ability.extra.x_mult = card.ability.extra.x_mult + card.ability.extra.scaling
 					if next(SMODS.find_mod("Maximus")) then SMODS.calculate_context({scaling_card = true}) end
 					return {
 					  message = localize('k_upgrade_ex'),
