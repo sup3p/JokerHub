@@ -5,10 +5,10 @@
 
 ## Current Additions
 - 15 new Jokers
-    - 3 Commons
-    - 7 Uncommons
-    - 4 Rares
-    - 1 Legendary
+    - 5 Commons
+    - 9 Uncommons
+    - 5 Rares
+    - 3 Legendaries
 - 2 new Stakes
     - **Pink Stake:** Bumps the final Ante up to 9, while applying all changes of Purple Stake and below.
     - **Silver Stake:** All changes from Pink Stake, but blinds scale even faster now!
@@ -97,3 +97,4 @@ Once again, notice how the values are passed in *reverse order* (in this case va
 - ScrimGrim: concept and art for Orb of Confusion
 - Doodlesack12: concept and art for Going Viral, Snowball Effect, and Demon Core
 - Quackers T. Encheese: concept and art for Da Joki
+- kars_on_mars: art for Mulligan
