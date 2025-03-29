@@ -22,7 +22,7 @@ JokerHub has built-in compatiblity with Maximus. If you're a mod creator looking
 Gambit uses a Food pool to know what jokers are food jokers, the same pool system used by Paperback and Maximus. To add your own jokers to this pool, you can simply add `pools = { Food = true }` to your joker's definition.
 
 ## Amamiya
-A helper function is provided to assist in adding new effects to Amamiya, `JHUB.add_amamiya_effect(new_boss_key, new_vars, new_effect)`. You can call this function when loading your mod to add a new effect.
+A helper function is provided to assist in adding new effects to Amamiya, `JHUB.add_amamiya_effect(new_boss_key, new_vars, new_effect)`. You can call this function when loading your mod to add a new effect, assuming your mod loads after JokerHub.
 ### new_boss_key
 The simplest argument, `new_boss_key` is simply the key of the boss blind as a string.
 ### new_vars

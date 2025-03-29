@@ -204,7 +204,7 @@ return {
                 text = {
                     "Every played card with",
                     "{C:hearts}Heart{} suit permanantly",
-                    "gains {X:mult,C:white}X#1#{} Mult"
+                    "gains {X:mult,C:white}X#1#{} Mult when scored"
                 }
             },
         },
