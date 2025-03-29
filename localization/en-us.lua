@@ -199,6 +199,14 @@ return {
                     "{C:attention}Gold{} cards and vice versa"
                 }
             },
+            j_jokerhub_lychee_dragon = {
+                name = 'Lychee Dragon',
+                text = {
+                    "Every played card with",
+                    "{C:hearts}Heart{} suit permanantly",
+                    "gains {X:mult,C:white}X#1#{} Mult"
+                }
+            },
         },
         Other={
             jokerhub_pink_sticker = {

@@ -28,6 +28,7 @@ JHUB.ENABLED_JOKERS = {
 	--Legendary
 	"hudson",
 	"amamiya",
+	"lychee_dragon"
 }
 
 JHUB.vanilla_food = {
@@ -50,6 +51,13 @@ SMODS.Atlas {
   py = 95,
   path = "jh_jokers.png"
 }
+
+SMODS.Atlas {
+	key = "atlas_lychee",
+	px = 73,
+	py = 95,
+	path = "jh_lychee.png"
+  }
 
 G.C.PINK = HEX('ff7df4')
 G.C.SILVER = HEX('9396c2')
