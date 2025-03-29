@@ -266,7 +266,7 @@ end
 
 --Compatibility Helper function
 
-function JHUB.add_amamiya_effects(new_boss_key, new_vars, new_effect)
+function JHUB.add_amamiya_effect(new_boss_key, new_vars, new_effect)
 	--Add new vars
 	local old_get_vars = JHUB.get_amamiya_vars
 	JHUB.get_amamiya_vars = function(card, boss_key, context)
