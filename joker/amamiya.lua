@@ -290,8 +290,8 @@ function JHUB.get_amamiya_vars(card, boss_key, context)
 		for i = 1, 5 do
 			local card = JHUB.card_at_deck_pos(i)
 			if card then
-				ret["card_"..i.."_rank"] = card.base.value
-				ret["card_"..i.."_suit"] = card.base.suit
+				ret["card_"..i.."_rank"] = localize(card.base.value, "ranks")
+				ret["card_"..i.."_suit"] = localize(card.base.suit, "suits_plural")
 				ret.colours[i] = G.C.SUITS[card.base.suit]
 			else
 				ret["card_"..i.."_rank"] = "None"
