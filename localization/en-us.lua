@@ -19,10 +19,10 @@ return {
             j_jokerhub_broker = {
                 name = 'Broker',
                 text = {
-                    "Earn no {C:attention}Interest{}.",
+                    "Earn no {C:attention}Interest{}",
                     "This Joker gains {C:chips}+#1#{} Chips for",
                     "every {C:money}$1{} of {C:attention}Interest{} that",
-                    "would've been earned.",
+                    "would've been earned",
                     "{C:inactive}(Currently {C:chips}+#2#{C:inactive} Chips)"
                 }
             },
@@ -31,7 +31,7 @@ return {
                 text = {
                     "This Joker gains {C:mult}+#2#{} Mult per {C:attention}2{} played",
                     "hands if both hands are the same",
-                    "{C:attention}hand type{}, otherwise {C:mult}-#3#{} Mult.",
+                    "{C:attention}hand type{}, otherwise {C:mult}-#3#{} Mult",
                     "{C:inactive}(Currently {C:mult}+#1#{} {C:inactive}Mult, {C:attention}#4#{C:inactive})"
                 }
             },
@@ -40,7 +40,7 @@ return {
                 text = {
                     "{X:mult,C:white}X#1#{} Mult",
                     "{C:green}#2# in #3#{} chance to destroy",
-                    "all {C:attention}Jokers{} when hand is played."
+                    "all {C:attention}Jokers{} when hand is played"
                 }
             },
             j_jokerhub_face_value = {
@@ -48,15 +48,15 @@ return {
                 text = {
                     "Every played {C:attention}face card{}",
                     "permanently gains",
-                    "{C:mult}+#1#{} Mult when scored."
+                    "{C:mult}+#1#{} Mult when scored"
                 }
             },
             j_jokerhub_forbidden_fruit = {
                 name = 'Forbidden Fruit',
                 text = {
-                    "This Joker gains {X:mult,C:white}X#2#{} Mult per hand played.",
+                    "This Joker gains {X:mult,C:white}X#2#{} Mult per hand played",
                     "{S:1.1,C:red,E:2}Self destructs{} if hand contains a",
-                    "scoring {C:attention}#3#{}, rank changes every round.",
+                    "scoring {C:attention}#3#{}, rank changes every round",
                     "{C:inactive}(Currently {X:mult,C:white} X#1# {C:inactive} Mult)"
                 }
             },
@@ -65,7 +65,7 @@ return {
                 text = {
                     "This Joker gains {X:mult,C:white} X#2# {} Mult",
                     "for every {C:attention}food Joker{}",
-                    "that is destroyed.",
+                    "that is destroyed",
                     "{C:inactive}(Currently {X:mult,C:white} X#1# {C:inactive} Mult)"
                 }
             },
@@ -73,26 +73,26 @@ return {
                 name = 'Garbage Bag',
                 text = {
                     "Unused {C:red}discards{} are carried",
-                    "into the next round.",
+                    "into the next round",
                     "{C:inactive}(Max of {C:red}#1#{C:inactive} discards){}"
                 }
             },
             j_jokerhub_going_viral = {
                 name = 'Going Viral',
                 text = {
-                    "This Joker gains {C:mult}+#2#{} Mult each played hand.",
+                    "This Joker gains {C:mult}+#2#{} Mult each played hand",
                     "{C:attention}Joker{} and {C:attention}consumable{} cards in",
                     "packs or shop have a {C:green}#3# in #4#{} chance",
-                    "to be replaced with {C:attention}Going Viral{}.",
+                    "to be replaced with {C:attention}Going Viral{}",
                     "{C:inactive}(Currently {C:mult}+#1#{} {C:inactive}Mult)",
                 }
             },
             j_jokerhub_hudson = {
                 name = 'Hudson',
                 text = {
-                    "Copies ability of {C:attention}Joker{} to the left.",
+                    "Copies ability of {C:attention}Joker{} to the left",
                     "This Joker triggers once for",
-                    "each {C:attention}7{} held in hand."
+                    "each {C:attention}7{} held in hand"
                 }
             },
             j_jokerhub_last_hurrah = {
@@ -101,7 +101,7 @@ return {
                     "If this Joker is in the {C:attention}last{} position,",
                     "retrigger {C:attention}last{} played card used in scoring",
                     "{C:attention}1{} additional time for every {C:money}$#1#{} you have",
-                    "{C:inactive}(Max of {C:attention}#2#{C:inactive} retriggers){}, then set money to {C:money}$0{}.",
+                    "{C:inactive}(Max of {C:attention}#2#{C:inactive} retriggers){}, then set money to {C:money}$0{}",
                     "{C:inactive}(Currently {C:attention}#3#{} {C:inactive}retriggers)",
                 }
             },
@@ -110,7 +110,7 @@ return {
                 text = {
                     "{X:mult,C:white}X#1#{} Mult",
                     "{C:attention}First hand{} of each round",
-                    "is drawn face down."
+                    "is drawn face down"
                 }
             },
             j_jokerhub_rekoj = {
@@ -118,7 +118,7 @@ return {
                 text = {
                     "{C:mult}+#1#{} Mult if poker hand contains at",
                     "least {C:attention}2{} scored {C:attention}ranks{} and scored {C:attention}ranks{}",
-                    "are arranged from lowest to highest."
+                    "are arranged from lowest to highest"
                 }
             },
             j_jokerhub_snowball_effect = {
@@ -126,7 +126,7 @@ return {
                 text = {
                     "This Joker gains {X:mult,C:white} X#2# {} Mult",
                     "per {C:attention}consecutive Blind{}",
-                    "beaten on the {C:attention}first hand{}.",
+                    "beaten on the {C:attention}first hand{}",
                     "{C:inactive}(Currently {X:mult,C:white} X#1# {C:inactive} Mult)"
                 }
             },
@@ -135,7 +135,7 @@ return {
                 text = {
                     "Create {C:attention}2{} of a random {C:tarot}Tarot{}",
                     "card if poker hand contains",
-                    "a {C:attention}Flush{} and a {C:attention}Pair{}.",
+                    "a {C:attention}Flush{} and a {C:attention}Pair{}",
                     "{C:inactive}(Must have room)"
                 }
             },
@@ -143,7 +143,7 @@ return {
                 name = 'Union Member Card',
                 text = {
                     "{X:mult,C:white}X#1#{} Mult if all other",
-                    "owned {C:attention}Jokers{} are {C:blue}Common{}.",
+                    "owned {C:attention}Jokers{} are {C:blue}Common{}",
                 }
             },
             j_jokerhub_mulligan = {
@@ -177,7 +177,7 @@ return {
             j_jokerhub_long_time_friends = {
                 name = 'Long Time Friends',
                 text = {
-                    "{C:attention}Eternal{} jokers can be sold.",
+                    "{C:attention}Eternal{} jokers can be sold",
                     "This Joker gains {X:mult,C:white}X#2#{} Mult",
                     "when an {C:attention}Eternal{} joker is sold",
                     "{C:inactive}(Currently {X:mult,C:white} X#1# {C:inactive} Mult)"
