@@ -438,6 +438,14 @@ return {
                     "retriggered {C:attention}twice{}"
                 },
             },
+            jokerhub_amamiya_ability_bl_mxms_grinder = {
+                name="The Grinder's Heart",
+                text={
+                    "Add a random {C:attention}seal{} to",
+                    "a random scored card",
+                    "in {C:attention}first hand{} of round"
+                },
+            },
         },
         Planet={},
         Spectral={},
@@ -475,6 +483,7 @@ return {
         collabs={},
         dictionary={
             k_jokerhub_syphon = "Syphoned!",
+            k_jokerhub_sealed = "Sealed!",
         },
         high_scores={},
         labels={},

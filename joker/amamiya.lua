@@ -232,6 +232,23 @@ function JHUB.get_amamiya_effect(card, context, boss_key, vars)
 				repetitions = 2
 			}
 		end
+	elseif boss_key == "bl_mxms_grinder" then --The Grinder (Maximus)
+		if not card.debuff and context.cardarea == G.jokers and context.before and G.GAME.current_round.hands_played == 0 then
+			local unsealed_cards = {}
+			for i = 1, #context.scoring_hand do
+				if not context.scoring_hand[i].seal then table.insert(unsealed_cards, context.scoring_hand[i]) end
+			end
+			if #unsealed_cards > 0 then
+				local seal_card = unsealed_cards[pseudorandom(pseudoseed("amamiya_grinder"), 1, #unsealed_cards)]
+				G.E_MANAGER:add_event(Event({func = function()
+					seal_card:set_seal(SMODS.poll_seal({guaranteed = true}))
+					seal_card:juice_up()
+				return true end }))
+				return {
+					message = localize('k_jokerhub_sealed'),
+				}
+			end
+		end
 	else --Default ability
 		if context.joker_main and not card.debuff then
 			return {
