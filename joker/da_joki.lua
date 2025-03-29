@@ -10,7 +10,7 @@ SMODS.Joker {
 	},
 	rarity = 1,
 	loc_vars = function(self, info_queue, card)
-		return {vars = {card.ability.extra.mult, card.ability.extra.scaling, card.ability.extra.inverse_scaling, card.ability.extra.hand_type or "No hand"}}
+		return {vars = {card.ability.extra.mult, card.ability.extra.scaling, card.ability.extra.inverse_scaling, card.ability.extra.hand_type and localize(card.ability.extra.hand_type, "poker_hands") or "No hand"}}
 	end,
 	atlas = "atlas_jokers",
 	pos = { x = 0, y = 3 },
