@@ -14,6 +14,7 @@ SMODS.Joker {
 	soul_pos = { x = 1, y = 0 },
 	cost = 20,
 	pools = { Food = true },
+	pixel_size = { w = 73, h = 95 },
 	unlocked = true,
 	discovered = false,
 	blueprint_compat = true,
