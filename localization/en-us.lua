@@ -394,7 +394,23 @@ return {
                 name="The House's Heart",
                 text={
                     "Cards in the {C:attention}first drawn{} hand",
-                    "held in hand give {X:mult,C:white}X#1#{} Mult",
+                    "each give {X:mult,C:white}X#1#{} Mult if held in hand",
+                },
+            },
+            jokerhub_amamiya_ability_bl_fish = {
+                name="The Fish's Heart",
+                text={
+                    "Retrigger all played",
+                    "cards in {C:attention}final",
+                    "{C:attention}hand{} of round",
+                },
+            },
+            jokerhub_amamiya_ability_bl_wheel = {
+                name="The Wheel's Heart",
+                text={
+                    "Cards held in hand at end of",
+                    "round have {C:green}#2# in #1#{} chance to gain",
+                    "{C:dark_edition}Foil{}, {C:dark_edition}Holographic{}, or {C:dark_edition}Polychrome{}",
                 },
             },
         },

@@ -113,7 +113,7 @@ function JHUB.get_amamiya_effect(card, context, boss_key)
 		if (context.add_to_deck and not card.ability.extra.hook_used) or (context.cardarea == G.jokers and context.end_of_round) then
 			card.ability.extra.hook_used = 0
 		end
-		if context.pre_discard and context.cardarea == G.jokers and card.ability.extra.hook_used < vars.max then
+		if not card.debuff and context.pre_discard and context.cardarea == G.jokers and card.ability.extra.hook_used < vars.max then
 			if #context.full_hand == vars.cards then
 				card.ability.extra.hook_used = card.ability.extra.hook_used + 1
 				G.E_MANAGER:add_event(Event({func = (function()
@@ -132,21 +132,21 @@ function JHUB.get_amamiya_effect(card, context, boss_key)
 	elseif boss_key == "bl_psychic" then --The Psychic
 		--Pass through
 	elseif boss_key == "bl_mouth" then --The Mouth
-		if G.GAME.hands[context.scoring_name] and G.GAME.hands[context.scoring_name].played_this_round > 1 then
+		if not card.debuff and context.joker_main and G.GAME.hands[context.scoring_name] and G.GAME.hands[context.scoring_name].played_this_round > 1 then
 			return {
 				message = localize{type='variable',key='a_xmult',vars={vars.x_mult}},
 				Xmult_mod = vars.x_mult,
 			}
 		end
 	elseif boss_key == "bl_eye" then --The Eye
-		if not G.GAME.hands[context.scoring_name] or G.GAME.hands[context.scoring_name].played_this_round < 1 then
+		if not card.debuff and context.joker_main and not G.GAME.hands[context.scoring_name] or G.GAME.hands[context.scoring_name].played_this_round < 1 then
 			return {
 				message = localize{type='variable',key='a_xmult',vars={vars.x_mult}},
 				Xmult_mod = vars.x_mult,
 			}
 		end
 	elseif boss_key == "bl_final_heart" then --Crimson Heart
-		if (context.add_to_deck and not card.ability.extra.crimson_card) or (context.cardarea == G.jokers and context.after) then
+		if (context.add_to_deck and not card.ability.extra.crimson_card) or (context.cardarea == G.jokers and context.after and not card.debuff) then
 			card.ability.extra.crimson_card = {}
 			local valid_indexes = {}
 			for i = 1, #G.jokers.cards do
@@ -158,7 +158,7 @@ function JHUB.get_amamiya_effect(card, context, boss_key)
 				id = G.jokers.cards[selected_index].ID
 			}
 		end
-		if context.retrigger_joker_check and not context.retrigger_joker and context.other_card.ability then
+		if not card.debuff and context.retrigger_joker_check and not context.retrigger_joker and context.other_card.ability then
             if context.other_card.ID == card.ability.extra.crimson_card.id then
                 return {
                     message = localize('k_again_ex'),
@@ -194,12 +194,29 @@ function JHUB.get_amamiya_effect(card, context, boss_key)
                 card.ability.jh_initial_hand = true
             end
 		end
-		if context.individual and context.cardarea == G.hand then
+		if not card.debuff and context.individual and context.cardarea == G.hand then
 			if context.other_card.ability.jh_initial_hand and not context.other_card.debuff then
 				return {
 					x_mult = vars.x_mult,
 					target_card = context.other_card
 				}
+			end
+		end
+	elseif boss_key == "bl_fish" then --The Fish
+		if not card.debuff and context.repetition and context.cardarea == G.play and context.other_card and G.GAME.current_round.hands_left == 0 then
+			return {
+				repetitions = 1
+			}
+		end
+	elseif boss_key == "bl_wheel" then --The Wheel
+		if not card.debuff and context.end_of_round and context.cardarea == G.hand and context.individual then
+			if not context.other_card.edition and pseudorandom(pseudoseed("amamiya_wheel")) < vars.numerator / vars.denominator then
+				local edition = poll_edition("amamiya_wheel_edition", nil, true, true, {"e_foil", "e_holo","e_polychrome"})
+				local edition_card = context.other_card
+				G.E_MANAGER:add_event(Event({trigger = 'after', delay = 0.4, func = function()
+					edition_card:set_edition(edition, true)
+					card:juice_up()
+				return true end }))
 			end
 		end
 	else --Default ability
@@ -235,6 +252,7 @@ function JHUB.get_amamiya_vars(card, boss_key, context)
 	if boss_key == "bl_final_heart" then return { card_name = card.ability.extra.crimson_card and card.ability.extra.crimson_card.name or "nothing" } end --Crimson Heart
 	if boss_key == "bl_poke_cgoose" then return { energy = 2 } end --Chartreuse Chamber
 	if boss_key == "bl_house" then return { x_mult = 1.5 } end --The House
+	if boss_key == "bl_wheel" then return { numerator = G.GAME.probabilities.normal, denominator = 7 } end --The Wheel
 
 	return { chips = 125 }
 end
@@ -291,6 +309,8 @@ SMODS.Joker {
 	perishable_compat = true,
 	calculate = function(self, card, context)
 		if not card.debuff then
+			calc_ret = JHUB.calculate_amamiya(card, context)
+
 			--Add new abilities
 			if context.cardarea == G.jokers and context.end_of_round then
 				if G.GAME.blind.boss and not card.ability.extra.boss_abilities[G.GAME.blind.config.blind.key] then
@@ -304,8 +324,6 @@ SMODS.Joker {
 					if enable_ability_ret then SMODS.calculate_effect(enable_ability_ret, card) end
 				end
 			end
-
-			calc_ret = JHUB.calculate_amamiya(card, context)
 
 			return calc_ret
 		end
