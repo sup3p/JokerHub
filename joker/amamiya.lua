@@ -129,7 +129,7 @@ function JHUB.get_amamiya_effect(card, context, boss_key, vars)
 		if context.remove_from_deck then
 			G.consumeables.config.card_limit = G.consumeables.config.card_limit - vars.slots
 		end
-	elseif boss_key == "bl_psychic" then --The Psychic
+	elseif boss_key == "bl_psychic" or boss_key == "bl_final_acorn" then --The Psychic/Amber Acorn
 		--Pass through
 	elseif boss_key == "bl_mouth" then --The Mouth
 		if not card.debuff and context.joker_main and G.GAME.hands[context.scoring_name] and G.GAME.hands[context.scoring_name].played_this_round > 1 then
@@ -260,6 +260,23 @@ function JHUB.get_amamiya_vars(card, boss_key, context)
 	if boss_key == "bl_poke_cgoose" then return { energy = 2 } end --Chartreuse Chamber
 	if boss_key == "bl_house" then return { x_mult = 1.5 } end --The House
 	if boss_key == "bl_wheel" then return { numerator = G.GAME.probabilities.normal, denominator = 7 } end --The Wheel
+	if boss_key == "bl_final_acorn" then 
+		local ret = {}
+		ret.colours = {}
+		for i = 1, 5 do
+			local card = JHUB.card_at_deck_pos(i)
+			if card then
+				ret["card_"..i.."_rank"] = card.base.value
+				ret["card_"..i.."_suit"] = card.base.suit
+				ret.colours[i] = G.C.SUITS[card.base.suit]
+			else
+				ret["card_"..i.."_rank"] = "None"
+				ret["card_"..i.."_suit"] = "None"
+				ret.colours[i] = G.C.FILTER
+			end
+		end
+		return ret
+	end
 
 	return { chips = 125 }
 end
@@ -325,7 +342,13 @@ SMODS.Joker {
 				prepended_key = "jokerhub_amamiya_ability_unknown"
 			end
 			local vars = {}
-			for var_key, var_value in pairs(JHUB.get_amamiya_vars(card, key)) do table.insert(vars, var_value) end
+			for var_key, var_value in JHUB.pairs_by_keys(JHUB.get_amamiya_vars(card, key)) do 
+				if var_key ~= "colours" then
+					table.insert(vars, var_value)
+				else
+					vars.colours = var_value
+				end
+			end
 			info_queue[#info_queue+1] = {set = 'Other', key = prepended_key, vars = vars}
 		end
 		return {vars = {}}

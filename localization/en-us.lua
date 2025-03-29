@@ -349,9 +349,9 @@ return {
                 name = "The Hook's Heart",
                 text = {
                     "If {C:attention}discarded{} hand",
-                    "contains exactly {C:attention}#2#{}",
+                    "contains exactly {C:attention}#1#{}",
                     "cards, gain {C:red}+1{} discard",
-                    "{C:inactive}(Max of {C:red}+#1#{C:inactive} per round)"
+                    "{C:inactive}(Max of {C:red}+#2#{C:inactive} per round)"
                 }
             },
             jokerhub_amamiya_ability_bl_psychic = {
@@ -419,6 +419,15 @@ return {
                     "{C:attention}Face{} cards held in",
                     "hand earn {C:money}$#1#{} at",
                     "end of round",
+                },
+            },
+            jokerhub_amamiya_ability_bl_final_acorn = {
+                name="Amber Acorn's Heart",
+                text={
+                    "The cards at the top of the deck are",
+                    "{C:attention}#1#{} of {V:1}#2#{}, {C:attention}#3#{} of {V:2}#4#{},",
+                    "{C:attention}#5#{} of {V:3}#6#{}, {C:attention}#7#{} of {V:4}#8#{},",
+                    "{C:attention}#9#{} of {V:5}#10#{}",
                 },
             },
         },

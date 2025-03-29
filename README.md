@@ -26,7 +26,7 @@ A helper function is provided to assist in adding new effects to Amamiya, `JHUB.
 ### new_boss_key
 The simplest argument, `new_boss_key` is simply the key of the boss blind as a string.
 ### new_vars
-`new_vars` takes a table with values to be used by the effect. As an example, the table for *The Wheel's* effect looks like `{ numerator = G.GAME.probabilities.normal, denominator = 7 }`. These vars can then be used by the effect function, for example as `vars.numerator` in the case of *The Wheel*. These values are also passed into `loc_vars` *in the reverse order they are defined*.
+`new_vars` takes a table with values to be used by the effect. As an example, the table for *The Wheel's* effect looks like `{ numerator = G.GAME.probabilities.normal, denominator = 7 }`. These vars can then be used by the effect function, for example as `vars.numerator` in the case of *The Wheel*. These values are also passed into `loc_vars` *in alphabetical order*. You can also add a `colours` entry to this table, and it will be passed into `loc_vars` appropriately for variable colors.
 ### new_effect
 This is where the effect is calculated. `new_effect` should be passed as a function with the arguments `(card, context, boss_key, vars)`, and the function operates very similarly to a joker's `calculate` function. The same table of values that can be returned by a calculate function can be returned by this function, and the return table also supports the value `target_card`, which is the card that the effect should display on if not Amamiya itself.
 - `card` - The Amamiya card object being operated on
@@ -91,7 +91,7 @@ descriptions = {
     }
 }
 ```
-Once again, notice how the values are passed in *reverse order* (in this case value 2 is the numerator and value 1 is the denominator). Keep this in mind if you're passing multiple values.
+Once again, notice how the values are passed in *alphabetical order* (in this case value 2 is the numerator and value 1 is the denominator). Keep this in mind if you're passing multiple values.
 
 ## Credits
 - ScrimGrim: concept and art for Orb of Confusion

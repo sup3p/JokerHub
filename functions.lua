@@ -84,6 +84,25 @@ function JHUB.is_food(card)
 	return JHUB.vanilla_food[center.key]
 end
 
+function JHUB.pairs_by_keys(_table, sortorder)
+	local a = {}
+	for n in pairs(_table) do table.insert(a, n) end
+	table.sort(a, sortorder)
+	local i = 0      -- iterator variable
+	local iter = function ()   -- iterator function
+		i = i + 1
+		if a[i] == nil then return nil
+		else return a[i], _table[a[i]]
+		end
+	end
+	return iter
+end
+
+function JHUB.card_at_deck_pos(position)
+	local index = #G.deck.cards - (position - 1)
+	return G.deck and G.deck.cards[index] or nil
+end
+
 --Empty function to be hooked by Amamiya
 SMODS.current_mod.process_loc_text = function()
     
