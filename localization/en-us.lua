@@ -413,6 +413,14 @@ return {
                     "{C:dark_edition}Foil{}, {C:dark_edition}Holographic{}, or {C:dark_edition}Polychrome{}",
                 },
             },
+            jokerhub_amamiya_ability_bl_mark = {
+                name="The Mark's Heart",
+                text={
+                    "{C:attention}Face{} cards held in",
+                    "hand earn {C:money}$#1#{} at",
+                    "end of round",
+                },
+            },
         },
         Planet={},
         Spectral={},

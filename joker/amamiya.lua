@@ -1,5 +1,5 @@
-function JHUB.get_amamiya_effect(card, context, boss_key)
-	local vars = JHUB.get_amamiya_vars(card, boss_key, context)
+function JHUB.get_amamiya_effect(card, context, boss_key, vars)
+	--local vars = JHUB.get_amamiya_vars(card, boss_key, context)
 
 	if boss_key == "bl_manacle" then --The Manacle
 		if context.add_to_deck then
@@ -219,6 +219,13 @@ function JHUB.get_amamiya_effect(card, context, boss_key)
 				return true end }))
 			end
 		end
+	elseif boss_key == "bl_mark" then --The Mark
+		if not card.debuff and context.end_of_round and context.cardarea == G.hand and context.individual and context.other_card:is_face() then
+			return {
+				dollars = vars.dollars,
+				target_card = context.other_card
+			}
+		end
 	else --Default ability
 		if context.joker_main and not card.debuff then
 			return {
@@ -234,7 +241,7 @@ function JHUB.get_amamiya_vars(card, boss_key, context)
 	context = context or {}
 
 	if boss_key == "bl_manacle" then return { hand_size_mod = 1 } end --The Manacle
-	if boss_key == "bl_ox" then return { dollars = 4 } end --The Ox
+	if boss_key == "bl_ox" or boss_key == "bl_mark" then return { dollars = 3 } end --The Ox
 	if boss_key == "bl_wall" then return { x_mult = 2 } end --The Wall
 	if boss_key == "bl_final_vessel" or boss_key == "bl_mouth" or boss_key == "bl_eye" then return { x_mult = 3 } end --Violet Vessel/The Mouth/The Eye
 	if boss_key == "bl_club" then return { suit = "Clubs" } end --The Club
@@ -257,10 +264,35 @@ function JHUB.get_amamiya_vars(card, boss_key, context)
 	return { chips = 125 }
 end
 
+--Compatibility Helper function
+
+function JHUB.add_amamiya_effects(new_boss_key, new_vars, new_effect)
+	--Add new vars
+	local old_get_vars = JHUB.get_amamiya_vars
+	JHUB.get_amamiya_vars = function(card, boss_key, context)
+		context = context or {}
+		if boss_key == new_boss_key then return new_vars end
+		return old_get_vars(card, boss_key, context)
+	end
+
+	--Add new effect
+	local old_get_amamiya_effect = JHUB.get_amamiya_effect
+	JHUB.get_amamiya_effect = function(card, context, boss_key, vars)
+		local ret = nil
+		if boss_key == new_boss_key then
+			ret = new_effect(card, context, boss_key, vars)
+		end
+		if not ret then
+			ret = old_get_amamiya_effect(card, context, boss_key, vars)
+		end
+		return ret
+	end
+end
+
 function JHUB.calculate_amamiya(card, context)
 	local reps = 0
 	for key, value in pairs(card.ability.extra.boss_abilities) do
-		local effect_ret = JHUB.get_amamiya_effect(card, context, key)
+		local effect_ret = JHUB.get_amamiya_effect(card, context, key, JHUB.get_amamiya_vars(card, key, context))
 		if effect_ret then
 			if effect_ret.repetitions then
 				reps = reps + effect_ret.repetitions
@@ -316,7 +348,8 @@ SMODS.Joker {
 				if G.GAME.blind.boss and not card.ability.extra.boss_abilities[G.GAME.blind.config.blind.key] then
 					card.ability.extra.boss_abilities[G.GAME.blind.config.blind.key] = true
 					--Do add-to-deck effects for the specified ability, for stuff like hand size
-					local enable_ability_ret = JHUB.get_amamiya_effect(card, {add_to_deck = true}, G.GAME.blind.config.blind.key)
+					local cont = {add_to_deck = true}
+					local enable_ability_ret = JHUB.get_amamiya_effect(card, cont, G.GAME.blind.config.blind.key, JHUB.get_amamiya_vars(card, G.GAME.blind.config.blind.key, cont))
 					SMODS.calculate_effect({
 						message = localize('k_upgrade_ex'),
 						card = card
