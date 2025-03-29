@@ -430,6 +430,14 @@ return {
                     "{C:attention}#9#{} of {V:5}#10#{}",
                 },
             },
+            jokerhub_amamiya_ability_bl_mxms_rot = {
+                name="The Rot's Heart",
+                text={
+                    "Each played card has a",
+                    "{C:green}#2# in #1#{} chance to be",
+                    "retriggered {C:attention}twice{}"
+                },
+            },
         },
         Planet={},
         Spectral={},

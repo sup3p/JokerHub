@@ -226,6 +226,12 @@ function JHUB.get_amamiya_effect(card, context, boss_key, vars)
 				target_card = context.other_card
 			}
 		end
+	elseif boss_key == "bl_mxms_rot" then --The Rot (Maximus)
+		if not card.debuff and context.repetition and context.cardarea == G.play and context.other_card and pseudorandom(pseudoseed("amamiya_rot")) < vars.numerator / vars.denominator then
+			return {
+				repetitions = 2
+			}
+		end
 	else --Default ability
 		if context.joker_main and not card.debuff then
 			return {
@@ -260,6 +266,7 @@ function JHUB.get_amamiya_vars(card, boss_key, context)
 	if boss_key == "bl_poke_cgoose" then return { energy = 2 } end --Chartreuse Chamber
 	if boss_key == "bl_house" then return { x_mult = 1.5 } end --The House
 	if boss_key == "bl_wheel" then return { numerator = G.GAME.probabilities.normal, denominator = 7 } end --The Wheel
+	if boss_key == "bl_mxms_rot" then return { numerator = G.GAME.probabilities.normal, denominator = 4 } end --The Rot (Maximus)
 	if boss_key == "bl_final_acorn" then 
 		local ret = {}
 		ret.colours = {}
