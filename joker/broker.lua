@@ -21,7 +21,7 @@ SMODS.Joker {
 	calculate = function(self, card, context)
 		if not card.debuff then
 			--Scoring
-			if context.joker_main and card.ability.extra.chips > 0 then
+			if context.joker_main and to_number(card.ability.extra.chips) > 0 then
 				return {
 					chip_mod = card.ability.extra.chips,
 					message = localize { type = 'variable', key = 'a_chips', vars = { card.ability.extra.chips } },

@@ -105,3 +105,4 @@ end
 
 --Tailsman support
 to_big = to_big or function(value) return value end
+to_number = to_number or function(value) return value end
