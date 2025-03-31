@@ -106,3 +106,21 @@ end
 --Tailsman support
 to_big = to_big or function(value) return value end
 to_number = to_number or function(value) return value end
+
+
+--Hook end of mod loading to hook functions after mods have loaded
+local old_inject = SMODS.injectItems
+SMODS.injectItems = function(modsDirectory)
+	old_inject()
+
+	if next(SMODS.find_mod("ReduxArcanum")) then
+		create_alchemical = function(...)
+			local card = create_card("Alchemical", ...)
+			if card.ability.set ~= "Joker" then
+				local edition = poll_alchemical_edition("random_alchemical", 1, not (card.ability.extra and card.ability.extra > 0))
+				card:set_edition(edition)
+			end
+			return card
+		end
+	end
+end
