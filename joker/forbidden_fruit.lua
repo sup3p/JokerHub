@@ -9,19 +9,7 @@ SMODS.Joker {
 	},
 	rarity = 3,
 	loc_vars = function(self, info_queue, card)
-		local visible_rank
-		if card.ability.extra.rank == 11 then
-			visible_rank = "Jack"
-		elseif card.ability.extra.rank == 12 then
-			visible_rank = "Queen"
-		elseif card.ability.extra.rank == 13 then
-			visible_rank = "King"
-		elseif card.ability.extra.rank == 14 then
-			visible_rank = "Ace"
-		else
-			visible_rank = tostring(card.ability.extra.rank)
-		end
-		return {vars = {card.ability.extra.x_mult, card.ability.extra.scaling, visible_rank}}
+		return {vars = {card.ability.extra.x_mult, card.ability.extra.scaling, localize(card.ability.extra.rank, "ranks")}}
 	end,
 	atlas = "atlas_jokers",
 	pos = { x = 0, y = 0 },
@@ -75,7 +63,8 @@ SMODS.Joker {
 						--card = card
 					}
 				else
-					card.ability.extra.x_mult = card:scale_value(card.ability.extra.x_mult, card.ability.extra.scaling)
+					card.ability.extra.x_mult = card.ability.extra.x_mult + card.ability.extra.scaling
+					if next(SMODS.find_mod("Maximus")) then SMODS.calculate_context({scaling_card = true}) end
 					return {
 					  message = localize('k_upgrade_ex'),
 					  colour = G.C.MULT,

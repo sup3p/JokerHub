@@ -37,30 +37,31 @@ function JHUB.pick_new_rank(exclude_rank)
 end
 
 --For cross-mod compatibility with Maximus
+--[[
 if not Card.scale_value then
 	function Card:scale_value(applied_value, scalar)
 		return applied_value + scalar
 	end
-end
+end]]
 
 -- Initialize Food pool if not existing, which may be created by other mods.
 -- Any joker can add itself to this pool by adding a pools table to its definition
 -- Credits to Cryptid for the idea
 if not SMODS.ObjectTypes.Food then
 	SMODS.ObjectType {
-	  key = 'Food',
-	  default = 'j_egg',
-	  cards = {
-		  ["j_gros_michel"] = true,
-		  ["j_egg"] = true,
-		  ["j_ice_cream"] = true,
-		  ["j_cavendish"] = true,
-		  ["j_turtle_bean"] = true,
-		  ["j_diet_cola"] = true,
-		  ["j_popcorn"] = true,
-		  ["j_ramen"] = true,
-		  ["j_selzer"] = true,
-	  },
+		key = 'Food',
+		default = 'j_egg',
+		cards = {
+			["j_gros_michel"] = true,
+			["j_egg"] = true,
+			["j_ice_cream"] = true,
+			["j_cavendish"] = true,
+			["j_turtle_bean"] = true,
+			["j_diet_cola"] = true,
+			["j_popcorn"] = true,
+			["j_ramen"] = true,
+			["j_selzer"] = true,
+		},
 	}
 end
 
@@ -81,4 +82,45 @@ function JHUB.is_food(card)
   
 	-- If it doesn't, we check if this is a vanilla food joker
 	return JHUB.vanilla_food[center.key]
-  end
+end
+
+function JHUB.pairs_by_keys(_table, sortorder)
+	local a = {}
+	for n in pairs(_table) do table.insert(a, n) end
+	table.sort(a, sortorder)
+	local i = 0      -- iterator variable
+	local iter = function ()   -- iterator function
+		i = i + 1
+		if a[i] == nil then return nil
+		else return a[i], _table[a[i]]
+		end
+	end
+	return iter
+end
+
+function JHUB.card_at_deck_pos(position)
+	local index = #G.deck.cards - (position - 1)
+	return G.deck and G.deck.cards[index] or nil
+end
+
+--Tailsman support
+to_big = to_big or function(value) return value end
+to_number = to_number or function(value) return value end
+
+
+--Hook end of mod loading to hook functions after mods have loaded
+local old_inject = SMODS.injectItems
+SMODS.injectItems = function(modsDirectory)
+	old_inject()
+
+	if next(SMODS.find_mod("ReduxArcanum")) then
+		create_alchemical = function(...)
+			local card = create_card("Alchemical", ...)
+			if card.ability.set ~= "Joker" then
+				local edition = poll_alchemical_edition("random_alchemical", 1, not (card.ability.extra and card.ability.extra > 0))
+				card:set_edition(edition)
+			end
+			return card
+		end
+	end
+end

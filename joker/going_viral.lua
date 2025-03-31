@@ -22,7 +22,8 @@ SMODS.Joker {
 	calculate = function(self, card, context)
 		if not card.debuff then
 			if context.cardarea == G.jokers and context.before and not (context.individual or context.repetition) and not context.blueprint then
-				card.ability.extra.mult = card:scale_value(card.ability.extra.mult, card.ability.extra.scaling)
+				card.ability.extra.mult = card.ability.extra.mult + card.ability.extra.scaling
+				if next(SMODS.find_mod("Maximus")) then SMODS.calculate_context({scaling_card = true}) end
 				return {
 				  message = localize('k_upgrade_ex'),
 				  colour = G.C.MULT,

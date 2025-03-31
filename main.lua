@@ -8,6 +8,7 @@ JHUB.ENABLED_JOKERS = {
 	"rekoj",
 	"da_joki",
 	"mulligan",
+	"leap_frog",
 	--Uncommon
 	"orb_of_confusion",
 	"going_viral",
@@ -17,13 +18,17 @@ JHUB.ENABLED_JOKERS = {
 	"union_member_card",
 	"gambit",
 	"syphon_funding",
+	"metal_joker",
 	--Rare
 	"forbidden_fruit",
 	"demon_core",
 	"last_hurrah",
 	"garbage_bag",
+	"long_time_friends",
 	--Legendary
 	"hudson",
+	"amamiya",
+	"lychee_dragon"
 }
 
 JHUB.vanilla_food = {
@@ -46,6 +51,13 @@ SMODS.Atlas {
   py = 95,
   path = "jh_jokers.png"
 }
+
+SMODS.Atlas {
+	key = "atlas_lychee",
+	px = 73,
+	py = 95,
+	path = "jh_lychee.png"
+  }
 
 G.C.PINK = HEX('ff7df4')
 G.C.SILVER = HEX('9396c2')

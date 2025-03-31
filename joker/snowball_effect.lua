@@ -23,7 +23,8 @@ SMODS.Joker {
 			--Upgrade/Reset
 			if context.end_of_round and not context.repetition and not context.individual and not context.blueprint then
 				if G.GAME.current_round.hands_played <= 1 then
-					card.ability.extra.x_mult = card:scale_value(card.ability.extra.x_mult, card.ability.extra.scaling)
+					card.ability.extra.x_mult = card.ability.extra.x_mult + card.ability.extra.scaling
+					if next(SMODS.find_mod("Maximus")) then SMODS.calculate_context({scaling_card = true}) end
 					return {
 					  message = localize('k_upgrade_ex'),
 					  colour = G.C.MULT,

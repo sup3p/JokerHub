@@ -96,7 +96,8 @@ else
 local brokers = SMODS.find_card("j_jokerhub_broker")
 for i = 1, #brokers do
 	local chips_to_add = G.GAME.interest_amount*math.min(math.floor(G.GAME.dollars/5), G.GAME.interest_cap/5)*brokers[i].ability.extra.scaling
-	brokers[i].ability.extra.chips = brokers[i]:scale_value(brokers[i].ability.extra.chips, chips_to_add)
+	brokers[i].ability.extra.chips = brokers[i].ability.extra.chips + chips_to_add
+	if next(SMODS.find_mod("Maximus")) then SMODS.calculate_context({scaling_card = true}) end
 	SMODS.calculate_effect({
 		message = localize('k_upgrade_ex'),
 		colour = G.C.CHIPS,
@@ -135,8 +136,8 @@ if ((G.GAME.dollars-G.GAME.bankrupt_at) - 10 >= 0) and
 '''
 position = "at"
 payload = '''
-local reroll_cost = (G.GAME.selected_back.effect.center.key == "b_jokerhub_film_deck") and 5 or 10
-if ((G.GAME.dollars-G.GAME.bankrupt_at) - reroll_cost >= 0) and
+local reroll_cost = to_big((G.GAME.selected_back.effect.center.key == "b_jokerhub_film_deck") and 5 or 10)
+if ((G.GAME.dollars-G.GAME.bankrupt_at) - reroll_cost >= to_big(0)) and
 '''
 match_indent = true
 times = 1
@@ -187,67 +188,6 @@ times = 1
 
 
 # -----------------------------------
-# Face Value
-# -----------------------------------
-
-[[patches]]
-[patches.pattern]
-target = "card.lua"
-pattern = '''
-perma_bonus = self.ability and self.ability.perma_bonus or 0,
-'''
-position = "after"
-payload = '''
-jh_mult_perma_bonus = self.ability and self.ability.jh_mult_perma_bonus or 0,
-'''
-match_indent = true
-times = 1
-
-[[patches]]
-[patches.pattern]
-target = "card.lua"
-pattern = '''
-bonus_chips = (self.ability.bonus + (self.ability.perma_bonus or 0)) > 0 and (self.ability.bonus + (self.ability.perma_bonus or 0)) or nil,
-'''
-position = "after"
-payload = '''
-jh_bonus_mult = (self.ability.jh_mult_perma_bonus or 0) > 0 and self.ability.jh_mult_perma_bonus or nil,
-'''
-match_indent = true
-times = 1
-
-[[patches]]
-[patches.pattern]
-target = "functions/common_events.lua"
-pattern = '''
-elseif _c.set == 'Enhanced' then 
-'''
-position = "before"
-payload = '''
-	if specific_vars.jh_bonus_mult then
-		localize{type = 'other', key = 'jokerhub_card_extra_mult', nodes = desc_nodes, vars = {specific_vars.jh_bonus_mult}}
-	end
-'''
-match_indent = true
-times = 1
-
-[[patches]]
-[patches.pattern]
-target = "functions/common_events.lua"
-pattern = '''
-elseif _c.set == 'Booster' then 
-'''
-position = "before"
-payload = '''
-	if specific_vars and specific_vars.jh_bonus_mult then
-		localize{type = 'other', key = 'jokerhub_card_extra_mult', nodes = desc_nodes, vars = {specific_vars.jh_bonus_mult}}
-	end
-'''
-match_indent = true
-times = 1
-
-
-# -----------------------------------
 # Syphon Funding
 # -----------------------------------
 
@@ -260,6 +200,78 @@ payload = '''
 
 for i = 1, #G.jokers.cards do
 	SMODS.debuff_card(G.jokers.cards[i], false, "jh_syphon")
+end
+'''
+match_indent = true
+times = 1
+
+
+# -----------------------------------
+# Long Time Friends
+# -----------------------------------
+
+[[patches]]
+[patches.pattern]
+target = "card.lua"
+pattern = '''if (G.SETTINGS.tutorial_complete or G.GAME.pseudorandom.seed ~= 'TUTORIAL' or G.GAME.round_resets.ante > 1) and'''
+position = "before"
+payload = '''
+--Check for a non-debuffed LTF
+local negate_eternal = false
+for key, ltf_card in pairs(SMODS.find_card("j_jokerhub_long_time_friends")) do
+	if not ltf_card.debuff then
+		negate_eternal = true
+		break
+	end
+end
+'''
+match_indent = true
+times = 1
+
+[[patches]]
+[patches.pattern]
+target = "card.lua"
+pattern = '''self.area.config.type == 'joker' and
+        not self.ability.eternal then'''
+position = "at"
+payload = '''
+self.area.config.type == 'joker' and
+(not self.ability.eternal or negate_eternal) then
+'''
+match_indent = true
+times = 1
+
+
+# -----------------------------------
+# Amamiya
+# -----------------------------------
+
+[[patches]]
+[patches.pattern]
+target = "functions/state_events.lua"
+pattern = '''for _, v in ipairs(SMODS.get_card_areas('playing_cards')) do'''
+position = "before"
+payload = '''
+SMODS.calculate_context({full_hand = G.play.cards, scoring_hand = scoring_hand, scoring_name = text, poker_hands = poker_hands, jh_scoring_before = true})
+'''
+match_indent = true
+times = 1
+
+[[patches]]
+[patches.pattern]
+target = "functions/state_events.lua"
+pattern = '''local splashed = SMODS.always_scores(G.play.cards[i]) or next(find_joker('Splash'))'''
+position = "after"
+payload = '''
+--Check for an Amamiya with The Psychic's Heart
+local amamiyas = SMODS.find_card("j_jokerhub_amamiya")
+if not splashed and #amamiyas > 0 then
+	for i = 1, #amamiyas do
+		if amamiyas[i].ability.extra.boss_abilities.bl_psychic then
+			splashed = true
+			break
+		end
+	end
 end
 '''
 match_indent = true

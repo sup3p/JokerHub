@@ -33,7 +33,7 @@ SMODS.Joker {
 			--Destroying
 			if context.cardarea == G.jokers and context.after then
 				if pseudorandom(pseudoseed("demoncore"..G.GAME.round_resets.ante)) < G.GAME.probabilities.normal / card.ability.extra.odds then
-					if mxms_scale_pessimistics then mxms_scale_pessimistics(G.GAME.probabilities.normal, card.ability.extra.odds) end
+					if next(SMODS.find_mod("Maximus")) then SMODS.calculate_context({failed_prob = true, odds = card.ability.extra.odds - G.GAME.probabilities.normal}) end
 					for i = 1, #G.jokers.cards do
 						if not G.jokers.cards[i].ability.eternal then
 							G.jokers.cards[i].getting_sliced = true
