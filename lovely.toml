@@ -206,11 +206,11 @@ times = 1
 [patches.pattern]
 target = "card.lua"
 pattern = '''self.area.config.type == 'joker' and
-        not self.ability.eternal then'''
+        not SMODS.is_eternal(self, {from_sell = true}) then'''
 position = "at"
 payload = '''
 self.area.config.type == 'joker' and
-(not self.ability.eternal or negate_eternal) then
+(not SMODS.is_eternal(self, {from_sell = true}) or negate_eternal) then
 '''
 match_indent = true
 times = 1
